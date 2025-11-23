@@ -36,8 +36,34 @@ const menuToggle = document.getElementById('menu-toggle');
 const sidebar = document.getElementById('sidebar');
 
 if (menuToggle && sidebar) {
-    menuToggle.addEventListener('click', function() {
+    menuToggle.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
         sidebar.classList.toggle('open');
+        document.body.classList.toggle('menu-open', sidebar.classList.contains('open'));
+        console.log('Menu toggled, sidebar open:', sidebar.classList.contains('open'));
+    });
+    
+    // Close sidebar when clicking on a link (mobile)
+    const sidebarLinks = sidebar.querySelectorAll('a');
+    sidebarLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            if (window.innerWidth <= 980) {
+                sidebar.classList.remove('open');
+                document.body.classList.remove('menu-open');
+            }
+        });
+    });
+    
+    // Close sidebar when clicking outside (mobile)
+    document.addEventListener('click', function(e) {
+        if (window.innerWidth <= 980 && 
+            sidebar.classList.contains('open') && 
+            !sidebar.contains(e.target) && 
+            !menuToggle.contains(e.target)) {
+            sidebar.classList.remove('open');
+            document.body.classList.remove('menu-open');
+        }
     });
 }
 
