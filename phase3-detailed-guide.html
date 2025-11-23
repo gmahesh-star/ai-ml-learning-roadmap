@@ -1,0 +1,456 @@
+﻿<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Phase 3 — Data Handling (Detailed Guide)</title>
+    <link rel="stylesheet" href="shared-styles.css">
+    <style>
+        /* Page-specific styles */
+        header {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px double var(--border-color)
+        }
+
+        h1 {
+            margin-top: 20px;
+            margin-bottom: 10px;
+            text-decoration: underline;
+            text-align: center
+        }
+
+        h2 {
+            margin-top: 20px;
+            margin-bottom: 10px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 5px
+        }
+
+        h3, h4 {
+            margin-top: 20px;
+            margin-bottom: 10px
+        }
+
+        p, ul {
+            line-height: 1.6;
+            margin: 10px 0
+        }
+
+        pre {
+            margin: 10px 0
+        }
+
+        section {
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 3px ridge var(--border-color);
+            background: var(--card-bg);
+            position: relative
+        }
+
+        section::before {
+            content: "";
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            border: 1px solid var(--border-color);
+            pointer-events: none
+        }
+
+        .meta {
+            margin-bottom: 10px;
+            font-style: italic;
+            border-left: 3px solid var(--border-color);
+            padding-left: 10px;
+            font-family: 'Palatino Linotype', 'Book Antiqua', serif
+        }
+    </style>
+</head>
+
+<body>
+<div id="progress-bar"></div>
+
+<div id="top-toolbar">
+    <div id="toolbar-left">
+        <button id="menu-toggle">☰ Menu</button>
+        <div style="font-weight:bold;font-size:18px;font-family:'Impact',sans-serif;letter-spacing:1px">AI ROADMAP</div>
+    </div>
+    <div id="toolbar-right">
+        <div id="search-container">
+            <input type="text" id="search-input" placeholder="Search roadmap..." />
+            <div id="search-results"></div>
+        </div>
+        <button id="theme-toggle"><span class="theme-icon">◐</span> Theme</button>
+    </div>
+</div>
+
+<nav id="sidebar">
+    <h3>Navigation</h3>
+    <ul>
+        <li><a href="index.html"><span class="nav-icon">⌂</span> Home</a></li>
+        <li><a href="index.html#phase1"><span class="nav-number">1</span> Programming</a></li>
+        <li><a href="index.html#phase2"><span class="nav-number">2</span> Math for ML</a></li>
+        <li><a href="index.html#phase3"><span class="nav-number">3</span> Data Handling</a></li>
+        <li><a href="index.html#phase4"><span class="nav-number">4</span> ML Core</a></li>
+        <li><a href="index.html#phase5"><span class="nav-number">5</span> Deep Learning</a></li>
+        <li><a href="index.html#phase6"><span class="nav-number">6</span> NLP & LLMs</a></li>
+        <li><a href="index.html#phase7"><span class="nav-number">7</span> MLOps</a></li>
+        <li><a href="index.html#phase8"><span class="nav-number">8</span> Advanced Topics</a></li>
+        <li><a href="index.html#phase9"><span class="nav-number">9</span> Portfolio</a></li>
+    </ul>
+</nav>
+
+    <div class="container">
+        <a href="index.html" class="back-link">Back to Main Roadmap</a>
+
+        <h1>Phase 3 — Data Handling (Pandas & NumPy)</h1>
+
+        <p><strong>Duration:</strong> 2 Weeks<br>
+            <strong>Objective:</strong> Develop the skills required to clean, explore, transform, and understand data.
+            This is the most practical skill in the entire AI/ML journey because every ML or DL model depends entirely
+            on data quality.
+        </p>
+
+        <section>
+            <h2>1. Introduction: Why Data Handling Matters</h2>
+            <p>In real-world AI development, nearly 70% of the work revolves around data.<br>
+                A model performs only as well as the data you feed it. Even the most advanced neural network cannot
+                compensate for poorly cleaned, badly structured or misunderstood data.</p>
+
+            <p>Phase 3 trains you to think like a data engineer:<br>
+                To read, inspect, clean, reshape, and understand raw data.</p>
+
+            <p>Good data handling skills differentiate a beginner ML student from someone who can build
+                professional-grade models.</p>
+        </section>
+
+        <section>
+            <h2>2. Core Tools You Must Learn</h2>
+            <p>During Phase 3, you mainly work with three Python libraries:</p>
+
+            <h3>NumPy</h3>
+            <ul>
+                <li>Foundational numerical computing library.</li>
+                <li>Used for vectorized operations, arrays, and fast mathematical computation.</li>
+            </ul>
+
+            <h3>Pandas</h3>
+            <ul>
+                <li>The primary tool for structured data manipulation in Python.</li>
+                <li>Built on top of NumPy and used to handle datasets in rows and columns.</li>
+            </ul>
+
+            <h3>Matplotlib</h3>
+            <ul>
+                <li>The fundamental plotting library.</li>
+                <li>Used for simple data visualization.</li>
+            </ul>
+
+            <p>If one masters these three tools, they can work with most datasets encountered in machine learning.</p>
+        </section>
+
+        <section>
+            <h2>3. What You Should Learn in Pandas</h2>
+            <p>Below are the essential topics a learner must understand thoroughly. Do not skip these; they form the
+                backbone of data science.</p>
+
+            <h3>3.1 Reading and Writing Data</h3>
+            <p>Learn how to read and write datasets in multiple formats.</p>
+            <p><strong>Key functions:</strong></p>
+            <ul>
+                <li><code>pandas.read_csv()</code></li>
+                <li><code>pandas.read_json()</code></li>
+                <li><code>pandas.read_excel()</code></li>
+                <li><code>DataFrame.to_csv()</code></li>
+                <li><code>DataFrame.to_json()</code></li>
+                <li><code>DataFrame.to_excel()</code></li>
+            </ul>
+            <p>You must be able to load a dataset, inspect it, clean it, and write it back.</p>
+
+            <h3>3.2 Inspecting Data</h3>
+            <p>When you load a dataset, begin with:</p>
+            <ul>
+                <li><code>df.head()</code></li>
+                <li><code>df.tail()</code></li>
+                <li><code>df.info()</code></li>
+                <li><code>df.describe()</code></li>
+                <li><code>df.columns</code></li>
+                <li><code>df.shape</code></li>
+            </ul>
+            <p>Develop a habit of understanding:</p>
+            <ul>
+                <li>What type of data each column contains.</li>
+                <li>Whether columns have missing values.</li>
+                <li>Whether values are numerical or categorical.</li>
+                <li>Whether the dataset has duplicates.</li>
+            </ul>
+            <p>This is the first and most important step of data work.</p>
+
+            <h3>3.3 Handling Missing Values</h3>
+            <p>Missing data is extremely common. You will learn:</p>
+            <ul>
+                <li>Identifying missing values using <code>df.isnull().sum()</code></li>
+                <li>Filling missing values:
+                    <ul>
+                        <li>Numerical: mean, median, mode</li>
+                        <li>Categorical: mode</li>
+                        <li>Domain-specific strategies</li>
+                    </ul>
+                </li>
+                <li>Dropping rows or columns if necessary: <code>df.dropna()</code></li>
+            </ul>
+            <p>Do not blindly drop data; you must maintain a balance between data size and quality.</p>
+
+            <h3>3.4 Handling Duplicates</h3>
+            <p>Datasets often contain exact duplicate rows, which need to be addressed.</p>
+            <ul>
+                <li>Find duplicates: <code>df.duplicated()</code></li>
+                <li>Remove duplicates: <code>df.drop_duplicates()</code></li>
+            </ul>
+            <p>This step prevents repeated information from influencing the model.</p>
+
+            <h3>3.5 Handling Outliers</h3>
+            <p>Certain values may be extremely large or small and can distort model training.</p>
+            <p>Learn methods such as:</p>
+            <ul>
+                <li>Interquartile range (IQR)</li>
+                <li>Box plot interpretation</li>
+                <li>Capping or flooring values (winsorization)</li>
+                <li>Domain-specific rules</li>
+            </ul>
+            <p>Handling outliers requires logical thinking more than memorization.</p>
+
+            <h3>3.6 Feature Engineering</h3>
+            <p>Feature engineering refers to the process of transforming raw features into meaningful format for ML.</p>
+            <p>Learn techniques such as:</p>
+            <ul>
+                <li>Creating new features from existing ones</li>
+                <li>Splitting columns (for example, extracting year/month/day from a date)</li>
+                <li>Binning numerical data (low, medium, high categories)</li>
+                <li>Normalizing text data</li>
+                <li>Combining multiple columns to create new metrics</li>
+            </ul>
+            <p>Feature engineering is where human creativity matters most.</p>
+
+            <h3>3.7 Encoding Categorical Data</h3>
+            <p>Most ML models accept only numerical data.<br>
+                Therefore, categorical columns must be encoded.</p>
+            <p>Learn:</p>
+            <ul>
+                <li>Label encoding</li>
+                <li>One-Hot encoding using:
+                    <ul>
+                        <li><code>pd.get_dummies()</code></li>
+                        <li><code>sklearn.preprocessing.OneHotEncoder</code></li>
+                    </ul>
+                </li>
+            </ul>
+            <p>Know when to use which method:</p>
+            <ul>
+                <li>Label encoding for ordinal categories</li>
+                <li>One-hot encoding for non-ordinal categories</li>
+            </ul>
+
+            <h3>3.8 Scaling Numerical Data</h3>
+            <p>Scaling ensures that all features contribute equally to model training.</p>
+            <p>Learn:</p>
+            <ul>
+                <li>Standardization (z-score scaling)</li>
+                <li>Min-max scaling</li>
+                <li>Robust scaling</li>
+            </ul>
+            <p>Use:</p>
+            <ul>
+                <li><code>sklearn.preprocessing.StandardScaler</code></li>
+                <li><code>sklearn.preprocessing.MinMaxScaler</code></li>
+            </ul>
+            <p>Scaling is essential for distance-based models, neural networks, and PCA.</p>
+        </section>
+
+        <section>
+            <h2>4. What You Should Learn in NumPy</h2>
+            <p>NumPy is used under the hood even when using pandas.<br>
+                Skills you must acquire:</p>
+            <ul>
+                <li>Creating arrays</li>
+                <li>Indexing and slicing arrays</li>
+                <li>Vectorized operations</li>
+                <li>Broadcasting rules</li>
+                <li>Aggregation functions (mean, sum, max, min)</li>
+                <li>Basic reshaping (reshape, flatten, transpose)</li>
+            </ul>
+            <p>Focus on writing operations without loops because vectorization makes code significantly faster.</p>
+        </section>
+
+        <section>
+            <h2>5. Basic Data Visualization (Matplotlib)</h2>
+            <p>Visualization is critical for understanding data. You learn how to:</p>
+            <ul>
+                <li>Plot histograms to understand distribution</li>
+                <li>Plot scatter plots to identify relationships</li>
+                <li>Plot box plots to detect outliers</li>
+                <li>Plot bar charts for categorical comparisons</li>
+            </ul>
+            <p>Visualizations help you detect:</p>
+            <ul>
+                <li>Trends</li>
+                <li>Clusters</li>
+                <li>Outliers</li>
+                <li>Patterns</li>
+                <li>Missing patterns in the data</li>
+            </ul>
+            <p>It is not necessary to master deep visualization libraries during Phase 3. Matplotlib basics are enough.
+            </p>
+        </section>
+
+        <section>
+            <h2>6. How to Study in Phase 3</h2>
+            <p>Follow these principles:</p>
+            <ul>
+                <li>Always explore the dataset before cleaning it.</li>
+                <li>Never perform transformations blindly; understand why they are needed.</li>
+                <li>Keep a notebook where you record patterns you observe.</li>
+                <li>Practice with multiple datasets instead of sticking to one.</li>
+                <li>Save intermediate results and compare before/after versions of data.</li>
+                <li>Read documentation for functions you use; it builds long-term skill.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>7. What Not to Do</h2>
+            <ul>
+                <li>Do not attempt advanced statistics yet; keep it simple.</li>
+                <li>Do not try to memorize all pandas functions. Practice is enough.</li>
+                <li>Do not skip exploratory data analysis. It is the heart of Phase 3.</li>
+                <li>Do not spend time learning seaborn or plotly in this phase. Stick to matplotlib.</li>
+                <li>Do not assume data is clean just because it looks clean at first glance.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>8. Mini Projects (Must Complete Before Phase 4)</h2>
+
+            <h3>Project 1: Movie Dataset EDA and Visualization</h3>
+            <p>Steps you must perform:</p>
+            <ul>
+                <li>Load the dataset</li>
+                <li>Inspect columns and types</li>
+                <li>Handle missing values</li>
+                <li>Clean inconsistent data</li>
+                <li>Analyze:
+                    <ul>
+                        <li>Ratings distribution</li>
+                        <li>Genre frequency</li>
+                        <li>Correlation between budget and revenue</li>
+                    </ul>
+                </li>
+                <li>Visualize:
+                    <ul>
+                        <li>Histograms</li>
+                        <li>Scatter plot</li>
+                        <li>Bar charts</li>
+                    </ul>
+                </li>
+            </ul>
+            <p>This project teaches end-to-end EDA.</p>
+
+            <h3>Project 2: Titanic Dataset or House Prices Dataset</h3>
+            <p>Choose one.</p>
+            <p>Required tasks:</p>
+            <ul>
+                <li>Read dataset</li>
+                <li>Analyze structure</li>
+                <li>Perform full cleaning:
+                    <ul>
+                        <li>Missing values</li>
+                        <li>Outliers</li>
+                        <li>Encoding</li>
+                        <li>Scaling (if needed)</li>
+                    </ul>
+                </li>
+                <li>Perform basic model training:
+                    <ul>
+                        <li>Logistic Regression for Titanic</li>
+                        <li>Linear Regression for House Prices</li>
+                    </ul>
+                </li>
+                <li>Evaluate performance</li>
+                <li>Document findings in a README</li>
+            </ul>
+            <p>The goal of this project is to simulate a real-world analytics pipeline.</p>
+        </section>
+
+        <section>
+            <h2>9. Expected Outcome of Phase 3</h2>
+            <p>By the end of these 2 weeks, learners should be capable of:</p>
+            <ul>
+                <li>Reading and exploring any structured dataset</li>
+                <li>Identifying issues such as missing values and outliers</li>
+                <li>Performing complete data cleaning steps</li>
+                <li>Encoding categorical data</li>
+                <li>Scaling numerical features</li>
+                <li>Performing basic EDA and visualization</li>
+                <li>Preparing data for machine learning models</li>
+                <li>Creating simple baseline models with cleaned data</li>
+            </ul>
+            <p><strong>Anyone who completes Phase 3 with focus will be ready for Phase 4: Machine Learning
+                    Core.</strong></p>
+        </section>
+
+        <a href="index.html" class="back-link" style="margin-top: 30px">Back to Main Roadmap</a>        <footer>
+            <hr>
+            <div class="footer-grid">
+                <div>
+                    <h3>About This Roadmap</h3>
+                    <p>
+                        A comprehensive, phase-by-phase guide designed to transform beginners into industry-ready AI practitioners. 
+                        Follow the structured path from Python basics to advanced AI topics.
+                    </p>
+                </div>
+                <div>
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#phase1">Phase 1: Programming Foundation</a></li>
+                        <li><a href="index.html#phase2">Phase 2: Math for ML</a></li>
+                        <li><a href="index.html#phase3">Phase 3: Data Handling</a></li>
+                        <li><a href="index.html#phase4">Phase 4: Machine Learning Core</a></li>
+                        <li><a href="index.html#phase5">Phase 5: Deep Learning</a></li>
+                        <li><a href="index.html#phase6">Phase 6: NLP & LLMs</a></li>
+                        <li><a href="index.html#phase7">Phase 7: MLOps & Deployment</a></li>
+                        <li><a href="index.html#phase8">Phase 8: Advanced AI Topics</a></li>
+                        <li><a href="index.html#phase9">Phase 9: Portfolio & Interview Prep</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Learning Path</h3>
+                    <p>
+                        <strong>Estimated Timeline:</strong> 6-12+ months<br>
+                        <strong>Commitment:</strong> 10-15 hours/week<br>
+                        <strong>Projects Required:</strong> 8-12 portfolio projects<br>
+                        <strong>Outcome:</strong> Industry-ready AI practitioner
+                    </p>
+                </div>
+            </div>
+            <hr>
+            <div class="footer-bottom">
+                <p style="font-size: 14px;">
+                    <strong>Complete Machine Learning & Deep Learning Roadmap</strong>
+                </p>
+                <p style="font-size: 13px;">
+                    From Zero to AI Engineer — A Systematic Approach to Modern AI Development
+                </p>
+                <p style="font-size: 12px;">
+                    © 2025 AI Learning Roadmap | Designed for aspiring AI practitioners worldwide
+                </p>
+            </div>
+        </footer>
+    </div>
+<script src="shared-scripts.js"></script>
+</body>
+
+</html>

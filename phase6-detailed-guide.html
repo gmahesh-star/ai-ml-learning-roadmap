@@ -1,0 +1,524 @@
+﻿<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Phase 6 — NLP & LLMs (Detailed Guide)</title>
+    <link rel="stylesheet" href="shared-styles.css">
+    <style>
+        /* Page-specific styles */
+        header {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px double var(--border-color)
+        }
+
+        h1 {
+            margin-top: 20px;
+            margin-bottom: 10px;
+            text-decoration: underline;
+            text-align: center
+        }
+
+        h2 {
+            margin-top: 20px;
+            margin-bottom: 10px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 5px
+        }
+
+        h3, h4 {
+            margin-top: 20px;
+            margin-bottom: 10px
+        }
+
+        p, ul {
+            line-height: 1.6;
+            margin: 10px 0
+        }
+
+        pre {
+            margin: 10px 0
+        }
+
+        section {
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 3px ridge var(--border-color);
+            background: var(--card-bg);
+            position: relative
+        }
+
+        section::before {
+            content: "";
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            border: 1px solid var(--border-color);
+            pointer-events: none
+        }
+
+        .meta {
+            margin-bottom: 10px;
+            font-style: italic;
+            border-left: 3px solid var(--border-color);
+            padding-left: 10px;
+            font-family: 'Palatino Linotype', 'Book Antiqua', serif
+        }
+    </style>
+</head>
+
+<body>
+<div id="progress-bar"></div>
+
+<div id="top-toolbar">
+    <div id="toolbar-left">
+        <button id="menu-toggle">☰ Menu</button>
+        <div style="font-weight:bold;font-size:18px;font-family:'Impact',sans-serif;letter-spacing:1px">AI ROADMAP</div>
+    </div>
+    <div id="toolbar-right">
+        <div id="search-container">
+            <input type="text" id="search-input" placeholder="Search roadmap..." />
+            <div id="search-results"></div>
+        </div>
+        <button id="theme-toggle"><span class="theme-icon">◐</span> Theme</button>
+    </div>
+</div>
+
+<nav id="sidebar">
+    <h3>Navigation</h3>
+    <ul>
+        <li><a href="index.html"><span class="nav-icon">⌂</span> Home</a></li>
+        <li><a href="index.html#phase1"><span class="nav-number">1</span> Programming</a></li>
+        <li><a href="index.html#phase2"><span class="nav-number">2</span> Math for ML</a></li>
+        <li><a href="index.html#phase3"><span class="nav-number">3</span> Data Handling</a></li>
+        <li><a href="index.html#phase4"><span class="nav-number">4</span> ML Core</a></li>
+        <li><a href="index.html#phase5"><span class="nav-number">5</span> Deep Learning</a></li>
+        <li><a href="index.html#phase6"><span class="nav-number">6</span> NLP & LLMs</a></li>
+        <li><a href="index.html#phase7"><span class="nav-number">7</span> MLOps</a></li>
+        <li><a href="index.html#phase8"><span class="nav-number">8</span> Advanced Topics</a></li>
+        <li><a href="index.html#phase9"><span class="nav-number">9</span> Portfolio</a></li>
+    </ul>
+</nav>
+
+    <div class="container">
+        <a href="index.html" class="back-link">Back to Main Roadmap</a>
+
+        <h1>Phase 6 — Natural Language Processing (NLP) & Large Language Models (LLMs)</h1>
+
+        <p><strong>Duration:</strong> 6–12 Weeks<br>
+            <strong>Objective:</strong> Understand the fundamentals of NLP, master modern transformer-based
+            architectures, and gain practical ability to build NLP applications using embeddings, transformers, and
+            LLMs.
+        </p>
+
+        <p>NLP is the field that enables machines to understand and generate human language.<br>
+            LLMs represent the peak of modern NLP research and are central to AI today.</p>
+
+        <section>
+            <h2>1. Introduction: Why NLP and LLMs Matter</h2>
+            <p>Text is one of the richest and most widely available data types.<br>
+                NLP powers applications such as:</p>
+            <ul>
+                <li>Chatbots</li>
+                <li>Document summarization</li>
+                <li>Search engines</li>
+                <li>Speech-to-text and text-to-speech systems</li>
+                <li>Translation systems</li>
+                <li>Email classification</li>
+                <li>Code generation</li>
+                <li>Personalized recommendations</li>
+            </ul>
+            <p>Large Language Models like GPT, LLaMA, PaLM, and BERT revolutionized the field by allowing models to
+                learn complex semantic and syntactic knowledge without manual feature engineering.</p>
+            <p>Understanding Phase 6 prepares you for building advanced AI systems used in industry today.</p>
+        </section>
+
+        <section>
+            <h2>2. Prerequisites for NLP and LLMs</h2>
+            <p>Before starting, ensure familiarity with:</p>
+            <ul>
+                <li>Deep Learning basics (Phase 5)</li>
+                <li>Embeddings and vector spaces</li>
+                <li>Python and PyTorch fundamentals</li>
+                <li>Basic data processing from Phase 3</li>
+            </ul>
+            <p>NLP builds directly on deep learning, so these prerequisites matter.</p>
+        </section>
+
+        <section>
+            <h2>3. Classical NLP Foundations</h2>
+            <p>Before transformers, NLP relied on statistical and classical deep learning methods.<br>
+                Understanding them creates a strong foundation.</p>
+
+            <h3>3.1 Text Preprocessing</h3>
+            <p>Text is unstructured, so preprocessing is essential.</p>
+            <p>Learn:</p>
+            <ul>
+                <li>Tokenization (splitting into words/subwords)</li>
+                <li>Lowercasing</li>
+                <li>Removing punctuation and special characters</li>
+                <li>Stopword removal</li>
+                <li>Stemming (reducing words to root form, e.g., "playing" → "play")</li>
+                <li>Lemmatization (context-aware root form)</li>
+            </ul>
+            <p>Understand when these steps are appropriate; LLMs sometimes do not require them.</p>
+
+            <h3>3.2 Bag-of-Words and TF-IDF</h3>
+            <p>Classical text representation methods:</p>
+            <p><strong>Bag-of-Words:</strong></p>
+            <ul>
+                <li>Converts text into word count vectors</li>
+                <li>Loses word order</li>
+            </ul>
+            <p><strong>TF-IDF:</strong></p>
+            <ul>
+                <li>Reweights words based on importance</li>
+                <li>Helps reduce influence of common words</li>
+            </ul>
+            <p>These representations are used extensively in classical ML text models.</p>
+
+            <h3>3.3 Word Embeddings</h3>
+            <p>Word embeddings map words to dense vectors representing semantic meaning.</p>
+            <p>Learn about:</p>
+            <ul>
+                <li>Word2Vec (skip-gram, CBOW)</li>
+                <li>GloVe</li>
+                <li>FastText</li>
+            </ul>
+            <p>Key concepts:</p>
+            <ul>
+                <li>Semantic similarity</li>
+                <li>Cosine similarity</li>
+                <li>Vector arithmetic (e.g., king - man + woman ≈ queen)</li>
+            </ul>
+            <p>These ideas lead to modern embeddings used by transformers.</p>
+        </section>
+
+        <section>
+            <h2>4. Recurrent Models for NLP</h2>
+            <p>Deep learning's first success in NLP came from sequence models.</p>
+            <p>Learn the following:</p>
+
+            <h3>4.1 RNNs</h3>
+            <p>Understand:</p>
+            <ul>
+                <li>Sequential processing</li>
+                <li>Hidden states</li>
+                <li>Vanishing gradient issue</li>
+            </ul>
+
+            <h3>4.2 LSTMs</h3>
+            <p>Key improvements:</p>
+            <ul>
+                <li>Memory cell</li>
+                <li>Gates controlling information flow</li>
+                <li>Better long-term dependency capture</li>
+            </ul>
+
+            <h3>4.3 GRUs</h3>
+            <p>Simplified LSTMs with fewer parameters.</p>
+            <p>These will help you understand the leap to transformers.</p>
+        </section>
+
+        <section>
+            <h2>5. The Transformer Architecture</h2>
+            <p>Transformers replaced RNNs by enabling parallel processing and superior long-range dependency capture.
+            </p>
+
+            <h3>5.1 Why Transformers Were Needed</h3>
+            <p>Limitations of RNN/LSTM:</p>
+            <ul>
+                <li>Sequential processing slows training</li>
+                <li>Difficulty capturing long-range dependencies</li>
+                <li>Gradient issues</li>
+            </ul>
+            <p>Transformers solve these by relying entirely on attention mechanisms.</p>
+
+            <h3>5.2 Key Components of Transformers</h3>
+
+            <h4>Multi-Head Self-Attention</h4>
+            <p>Allows the model to focus on different parts of the input simultaneously.</p>
+            <p>Learn:</p>
+            <ul>
+                <li>Query, Key, Value vectors</li>
+                <li>Attention scores</li>
+                <li>Softmax</li>
+                <li>Weighted sums</li>
+                <li>Multi-head attention structure</li>
+            </ul>
+
+            <h4>Positional Encoding</h4>
+            <p>Transformers have no sense of order, so they inject position information into embeddings.</p>
+
+            <h4>Encoder and Decoder Blocks</h4>
+            <p><strong>Encoder:</strong> Processes input sequences</p>
+            <p><strong>Decoder:</strong> Generates output autoregressively</p>
+
+            <h4>Feed-Forward Networks</h4>
+            <p>Enhance representation capacity in each block.</p>
+
+            <h4>Residual Connections</h4>
+            <p>Allow easier gradient flow.</p>
+
+            <h4>Layer Normalization</h4>
+            <p>Stabilizes training.</p>
+
+            <p>Understand each of these deeply.</p>
+        </section>
+
+        <section>
+            <h2>6. Important Transformer-Based Models</h2>
+
+            <h3>6.1 BERT</h3>
+            <p>Bidirectional Encoder Representations from Transformers.</p>
+            <p>Used for:</p>
+            <ul>
+                <li>Classification</li>
+                <li>Question answering</li>
+                <li>Filling missing words</li>
+                <li>Sentence embeddings</li>
+            </ul>
+            <p>Key ideas:</p>
+            <ul>
+                <li>Masked Language Modeling</li>
+                <li>Next Sentence Prediction</li>
+                <li>Encoder-only architecture</li>
+            </ul>
+
+            <h3>6.2 GPT-Series</h3>
+            <p>Generative Pretrained Transformer.</p>
+            <p>Used for:</p>
+            <ul>
+                <li>Text generation</li>
+                <li>Chatbots</li>
+                <li>Code generation</li>
+                <li>Story writing</li>
+            </ul>
+            <p>Key ideas:</p>
+            <ul>
+                <li>Decoder-only architecture</li>
+                <li>Autoregressive modeling</li>
+                <li>Causal attention masks</li>
+            </ul>
+
+            <h3>6.3 T5 and Encoder-Decoder Models</h3>
+            <p>Text-to-Text Transfer Transformer.</p>
+            <p>Used for:</p>
+            <ul>
+                <li>Summarization</li>
+                <li>Translation</li>
+                <li>Text generation tasks</li>
+            </ul>
+            <p>Everything is treated as a text transformation.</p>
+        </section>
+
+        <section>
+            <h2>7. Modern NLP Skills You Must Learn</h2>
+
+            <h3>7.1 Fine-Tuning Models</h3>
+            <p>Learn to fine-tune:</p>
+            <ul>
+                <li>BERT for classification</li>
+                <li>RoBERTa for sentiment analysis</li>
+                <li>DistilBERT for lightweight tasks</li>
+                <li>GPT-style models for generation</li>
+            </ul>
+            <p>Requires:</p>
+            <ul>
+                <li>Tokenizers</li>
+                <li>Attention masks</li>
+                <li>Custom datasets</li>
+                <li>Training loops with transformers</li>
+            </ul>
+
+            <h3>7.2 Embeddings and Semantic Search</h3>
+            <p>Modern embeddings represent entire sentences or documents.</p>
+            <p>Learn:</p>
+            <ul>
+                <li>Sentence Transformers</li>
+                <li>Semantic similarity</li>
+                <li>Cosine similarity</li>
+                <li>Embedding spaces</li>
+            </ul>
+            <p>Used for:</p>
+            <ul>
+                <li>Search engines</li>
+                <li>Retrieval systems</li>
+                <li>RAG (Retrieval-Augmented Generation)</li>
+            </ul>
+
+            <h3>7.3 Retrieval-Augmented Generation (RAG)</h3>
+            <p>Essential for building practical LLM applications.</p>
+            <p>Process:</p>
+            <ul>
+                <li>Convert documents to embeddings</li>
+                <li>Store embeddings in vector database</li>
+                <li>Retrieve relevant chunks</li>
+                <li>Feed them to an LLM</li>
+                <li>Generate accurate, grounded answers</li>
+            </ul>
+            <p>Understand:</p>
+            <ul>
+                <li>FAISS</li>
+                <li>Pinecone</li>
+                <li>Chroma DB</li>
+                <li>LangChain retrieval pipelines</li>
+            </ul>
+
+            <h3>7.4 Prompt Engineering</h3>
+            <p>The technique of instructing LLMs effectively.</p>
+            <p>Learn:</p>
+            <ul>
+                <li>Zero-shot prompting</li>
+                <li>Few-shot prompting</li>
+                <li>Chain-of-Thought prompting</li>
+                <li>Role prompting</li>
+                <li>Constraint-based prompting</li>
+            </ul>
+            <p>Prompt engineering is now a crucial skill in LLM-based development.</p>
+        </section>
+
+        <section>
+            <h2>8. Practical NLP and LLM Workflows</h2>
+            <ul>
+                <li>Preprocessing</li>
+                <li>Tokenization</li>
+                <li>Building Datasets</li>
+                <li>Using Hugging Face Transformers</li>
+                <li>Training and evaluating models</li>
+                <li>Saving, loading, and deploying models</li>
+                <li>Monitoring generation quality</li>
+            </ul>
+            <p>These are must-have professional skills.</p>
+        </section>
+
+        <section>
+            <h2>9. Mini Projects (Mandatory)</h2>
+
+            <h3>Project 1: Text Classification with BERT</h3>
+            <p>Tasks:</p>
+            <ul>
+                <li>Load dataset (e.g., IMDB reviews)</li>
+                <li>Tokenize text</li>
+                <li>Fine-tune BERT</li>
+                <li>Evaluate precision, recall, F1</li>
+                <li>Inspect misclassified samples</li>
+            </ul>
+            <p>Outcome: Understanding BERT-based deep NLP.</p>
+
+            <h3>Project 2: Document Q&A System using RAG</h3>
+            <p>Tasks:</p>
+            <ul>
+                <li>Extract text from PDFs</li>
+                <li>Chunk text into sections</li>
+                <li>Generate vector embeddings</li>
+                <li>Build retrieval using FAISS or Pinecone</li>
+                <li>Build a question-answering interface</li>
+            </ul>
+            <p>Outcome: Introduction to LLM-powered applications.</p>
+
+            <h3>Project 3: Summarization System</h3>
+            <p>Tasks:</p>
+            <ul>
+                <li>Use T5 or BART</li>
+                <li>Fine-tune on news or article datasets</li>
+                <li>Generate summaries</li>
+                <li>Evaluate with ROUGE metrics</li>
+            </ul>
+            <p>Outcome: Understanding encoder-decoder models.</p>
+
+            <h3>Project 4: Chatbot with GPT-style Model</h3>
+            <p>Tasks:</p>
+            <ul>
+                <li>Build conversational pipeline</li>
+                <li>Include memory or context</li>
+                <li>Deploy as an API</li>
+                <li>Test response quality and adjust prompts</li>
+            </ul>
+            <p>Outcome: End-to-end LLM integration.</p>
+        </section>
+
+        <section>
+            <h2>10. What Learners Should Avoid</h2>
+            <ul>
+                <li>Do not rely solely on prompts without understanding models.</li>
+                <li>Do not jump directly to building chatbots before learning embeddings.</li>
+                <li>Do not fine-tune large models without understanding hardware constraints.</li>
+                <li>Do not ignore evaluation metrics such as BLEU, ROUGE, and perplexity.</li>
+                <li>Do not use large datasets before mastering small-scale experiments.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>11. Expected Outcomes of Phase 6</h2>
+            <p>At the end of this phase, learners should be able to:</p>
+            <ul>
+                <li>Understand classical and modern NLP approaches</li>
+                <li>Build deep learning models for text data</li>
+                <li>Understand transformer architecture and attention mechanism</li>
+                <li>Fine-tune BERT, T5, and other transformer models</li>
+                <li>Build RAG applications with vector databases</li>
+                <li>Utilize prompt engineering effectively</li>
+                <li>Develop chatbot, summarization, and Q&A systems</li>
+                <li>Transition into Phase 7 (MLOps) and model deployment</li>
+            </ul>
+            <p><strong>Phase 6 prepares learners to build real LLM-powered solutions used in industry.</strong></p>
+        </section>
+
+        <a href="index.html" class="back-link" style="margin-top: 30px">Back to Main Roadmap</a>        <footer>
+            <hr>
+            <div class="footer-grid">
+                <div>
+                    <h3>About This Roadmap</h3>
+                    <p>
+                        A comprehensive, phase-by-phase guide designed to transform beginners into industry-ready AI practitioners. 
+                        Follow the structured path from Python basics to advanced AI topics.
+                    </p>
+                </div>
+                <div>
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#phase1">Phase 1: Programming Foundation</a></li>
+                        <li><a href="index.html#phase2">Phase 2: Math for ML</a></li>
+                        <li><a href="index.html#phase3">Phase 3: Data Handling</a></li>
+                        <li><a href="index.html#phase4">Phase 4: Machine Learning Core</a></li>
+                        <li><a href="index.html#phase5">Phase 5: Deep Learning</a></li>
+                        <li><a href="index.html#phase6">Phase 6: NLP & LLMs</a></li>
+                        <li><a href="index.html#phase7">Phase 7: MLOps & Deployment</a></li>
+                        <li><a href="index.html#phase8">Phase 8: Advanced AI Topics</a></li>
+                        <li><a href="index.html#phase9">Phase 9: Portfolio & Interview Prep</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Learning Path</h3>
+                    <p>
+                        <strong>Estimated Timeline:</strong> 6-12+ months<br>
+                        <strong>Commitment:</strong> 10-15 hours/week<br>
+                        <strong>Projects Required:</strong> 8-12 portfolio projects<br>
+                        <strong>Outcome:</strong> Industry-ready AI practitioner
+                    </p>
+                </div>
+            </div>
+            <hr>
+            <div class="footer-bottom">
+                <p style="font-size: 14px;">
+                    <strong>Complete Machine Learning & Deep Learning Roadmap</strong>
+                </p>
+                <p style="font-size: 13px;">
+                    From Zero to AI Engineer — A Systematic Approach to Modern AI Development
+                </p>
+                <p style="font-size: 12px;">
+                    © 2025 AI Learning Roadmap | Designed for aspiring AI practitioners worldwide
+                </p>
+            </div>
+        </footer>
+    </div>
+<script src="shared-scripts.js"></script>
+</body>
+
+</html>

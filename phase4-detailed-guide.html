@@ -1,0 +1,473 @@
+﻿<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Phase 4 — Machine Learning Core (Detailed Guide)</title>
+    <link rel="stylesheet" href="shared-styles.css">
+    <style>
+        /* Page-specific styles */
+        header {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px double var(--border-color)
+        }
+
+        h1 {
+            margin-top: 20px;
+            margin-bottom: 10px;
+            text-decoration: underline;
+            text-align: center
+        }
+
+        h2 {
+            margin-top: 20px;
+            margin-bottom: 10px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 5px
+        }
+
+        h3, h4 {
+            margin-top: 20px;
+            margin-bottom: 10px
+        }
+
+        p, ul {
+            line-height: 1.6;
+            margin: 10px 0
+        }
+
+        pre {
+            margin: 10px 0
+        }
+
+        section {
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 3px ridge var(--border-color);
+            background: var(--card-bg);
+            position: relative
+        }
+
+        section::before {
+            content: "";
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            border: 1px solid var(--border-color);
+            pointer-events: none
+        }
+
+        .meta {
+            margin-bottom: 10px;
+            font-style: italic;
+            border-left: 3px solid var(--border-color);
+            padding-left: 10px;
+            font-family: 'Palatino Linotype', 'Book Antiqua', serif
+        }
+    </style>
+</head>
+
+<body>
+<div id="progress-bar"></div>
+
+<div id="top-toolbar">
+    <div id="toolbar-left">
+        <button id="menu-toggle">☰ Menu</button>
+        <div style="font-weight:bold;font-size:18px;font-family:'Impact',sans-serif;letter-spacing:1px">AI ROADMAP</div>
+    </div>
+    <div id="toolbar-right">
+        <div id="search-container">
+            <input type="text" id="search-input" placeholder="Search roadmap..." />
+            <div id="search-results"></div>
+        </div>
+        <button id="theme-toggle"><span class="theme-icon">◐</span> Theme</button>
+    </div>
+</div>
+
+<nav id="sidebar">
+    <h3>Navigation</h3>
+    <ul>
+        <li><a href="index.html"><span class="nav-icon">⌂</span> Home</a></li>
+        <li><a href="index.html#phase1"><span class="nav-number">1</span> Programming</a></li>
+        <li><a href="index.html#phase2"><span class="nav-number">2</span> Math for ML</a></li>
+        <li><a href="index.html#phase3"><span class="nav-number">3</span> Data Handling</a></li>
+        <li><a href="index.html#phase4"><span class="nav-number">4</span> ML Core</a></li>
+        <li><a href="index.html#phase5"><span class="nav-number">5</span> Deep Learning</a></li>
+        <li><a href="index.html#phase6"><span class="nav-number">6</span> NLP & LLMs</a></li>
+        <li><a href="index.html#phase7"><span class="nav-number">7</span> MLOps</a></li>
+        <li><a href="index.html#phase8"><span class="nav-number">8</span> Advanced Topics</a></li>
+        <li><a href="index.html#phase9"><span class="nav-number">9</span> Portfolio</a></li>
+    </ul>
+</nav>
+
+    <div class="container">
+        <a href="index.html" class="back-link">Back to Main Roadmap</a>
+
+        <h1>Phase 4 — Machine Learning Core</h1>
+
+        <p><strong>Duration:</strong> 6–8 Weeks<br>
+            <strong>Objective:</strong> Develop strong theoretical understanding and practical proficiency in classical
+            Machine Learning.
+            This phase will give you the ability to build, train, evaluate, and compare ML models that solve real
+            problems.
+        </p>
+
+        <section>
+            <h2>1. Introduction: Why Phase 4 Matters</h2>
+            <p>Machine Learning is the foundation of AI. Even though deep learning and LLMs dominate today's world,
+                classical ML algorithms remain essential because:</p>
+            <ul>
+                <li>They are fast to train.</li>
+                <li>They work well with small to medium-sized datasets.</li>
+                <li>They are easier to interpret and debug.</li>
+                <li>They remain the starting point in most industry workflows.</li>
+            </ul>
+            <p>A person who truly understands classical ML can understand deep learning more easily, because the
+                principles of optimization, generalization, and model evaluation remain similar.</p>
+            <p>Phase 4 is where you bridge data handling skills (Phase 3) with modeling and prediction.</p>
+        </section>
+
+        <section>
+            <h2>2. The Workflow of Machine Learning</h2>
+            <p>Before studying individual algorithms, learners must understand the ML workflow:</p>
+            <ul>
+                <li>Define the problem</li>
+                <li>Collect and clean data</li>
+                <li>Prepare features</li>
+                <li>Split data into train and test sets</li>
+                <li>Select algorithms</li>
+                <li>Train models</li>
+                <li>Evaluate performance</li>
+                <li>Tune hyperparameters</li>
+                <li>Compare models</li>
+                <li>Deploy or finalize model</li>
+            </ul>
+            <p>Every ML project in industry follows this pipeline.</p>
+        </section>
+
+        <section>
+            <h2>3. Supervised Learning Algorithms (Essential Set)</h2>
+            <p>This section covers algorithms used for regression (predicting continuous numbers) and classification
+                (predicting categories).</p>
+
+            <h3>3.1 Linear Regression</h3>
+            <p><strong>Purpose:</strong> Predict continuous values (e.g., house prices).</p>
+            <p>Concepts to understand:</p>
+            <ul>
+                <li>Linear relationship between features and target</li>
+                <li>Cost function (Mean Squared Error)</li>
+                <li>Gradient Descent vs Closed Form Solution</li>
+                <li>Overfitting and underfitting</li>
+                <li>Regularization (L1/Lasso, L2/Ridge)</li>
+            </ul>
+            <p>Practical tasks:</p>
+            <ul>
+                <li>Fit a regression line</li>
+                <li>Plot residuals</li>
+                <li>Interpret model coefficients</li>
+                <li>Evaluate using MAE, MSE, RMSE, R²</li>
+            </ul>
+            <p>Linear regression teaches core mathematical foundations used in deep learning.</p>
+
+            <h3>3.2 Logistic Regression</h3>
+            <p><strong>Purpose:</strong> Classification tasks (yes/no outcomes).</p>
+            <p>Important concepts:</p>
+            <ul>
+                <li>Sigmoid function</li>
+                <li>Decision boundary</li>
+                <li>Probability outputs</li>
+                <li>Binary cross-entropy loss</li>
+                <li>Multiclass classification (One-vs-Rest)</li>
+            </ul>
+            <p>This is the most important classification model for beginners. It is interpretable, fast, and widely
+                used.</p>
+
+            <h3>3.3 Decision Trees</h3>
+            <p><strong>Purpose:</strong> Both regression and classification.</p>
+            <p>Advantages:</p>
+            <ul>
+                <li>Easy to understand</li>
+                <li>Handles nonlinear patterns</li>
+                <li>Handles categorical and numerical data</li>
+            </ul>
+            <p>Concepts to learn:</p>
+            <ul>
+                <li>Gini impurity</li>
+                <li>Entropy</li>
+                <li>Information gain</li>
+                <li>Tree depth</li>
+                <li>Overfitting in trees</li>
+                <li>Pruning techniques</li>
+            </ul>
+            <p>Decision trees form the base of advanced algorithms like Random Forests and XGBoost.</p>
+
+            <h3>3.4 Random Forest</h3>
+            <p>An ensemble of decision trees.</p>
+            <p>Strengths:</p>
+            <ul>
+                <li>High accuracy</li>
+                <li>Less prone to overfitting</li>
+                <li>Works on most datasets</li>
+            </ul>
+            <p>Concepts:</p>
+            <ul>
+                <li>Bagging (bootstrap aggregating)</li>
+                <li>Majority voting / averaging</li>
+                <li>Feature importance</li>
+            </ul>
+            <p>Random Forests are often the first baseline model used in industry.</p>
+
+            <h3>3.5 K-Nearest Neighbors (KNN)</h3>
+            <p>A simple but effective model.</p>
+            <p>Concepts to learn:</p>
+            <ul>
+                <li>Distance metrics (Euclidean, Manhattan)</li>
+                <li>Choosing K</li>
+                <li>Curse of dimensionality</li>
+                <li>Scaling necessity</li>
+            </ul>
+            <p>It is slow for large datasets but excellent for conceptual understanding.</p>
+
+            <h3>3.6 Support Vector Machines (SVM)</h3>
+            <p>A powerful algorithm for both regression and classification.</p>
+            <p>Concepts:</p>
+            <ul>
+                <li>Hyperplanes</li>
+                <li>Margins</li>
+                <li>Support vectors</li>
+                <li>Kernel trick (RBF, polynomial, linear)</li>
+                <li>Soft margin vs hard margin</li>
+            </ul>
+            <p>SVMs perform exceptionally well on high-dimensional data.</p>
+
+            <h3>3.7 Gradient Boosting and XGBoost</h3>
+            <p>These are among the most powerful classical ML techniques.</p>
+            <p>Key concepts:</p>
+            <ul>
+                <li>Boosting (sequential learning)</li>
+                <li>Weak learners</li>
+                <li>Loss reduction at each stage</li>
+            </ul>
+            <p>Hyperparameters:</p>
+            <ul>
+                <li>learning rate</li>
+                <li>max depth</li>
+                <li>number of estimators</li>
+            </ul>
+            <p>XGBoost, LightGBM, and CatBoost are widely used in Kaggle competitions and industry projects.</p>
+        </section>
+
+        <section>
+            <h2>4. Unsupervised Learning Algorithms</h2>
+            <p>These algorithms discover patterns and structure in data without labeled outputs.</p>
+
+            <h3>4.1 K-Means Clustering</h3>
+            <p>Used for grouping similar data points.</p>
+            <p>Concepts:</p>
+            <ul>
+                <li>Centroids</li>
+                <li>Distance from center</li>
+                <li>Inertia</li>
+                <li>Elbow method</li>
+                <li>Limitations (spherical clusters, sensitivity to outliers)</li>
+            </ul>
+
+            <h3>4.2 Principal Component Analysis (PCA)</h3>
+            <p>Used for dimensionality reduction.</p>
+            <p>Concepts:</p>
+            <ul>
+                <li>Variance</li>
+                <li>Covariance matrix</li>
+                <li>Eigenvectors</li>
+                <li>Projection into lower dimensions</li>
+                <li>Importance of scaling before PCA</li>
+            </ul>
+            <p>PCA is critical in preprocessing high-dimensional data.</p>
+        </section>
+
+        <section>
+            <h2>5. Data Splitting and Cross-Validation</h2>
+            <p>Every ML model must be evaluated properly.</p>
+            <p>Key steps:</p>
+            <ul>
+                <li>Train-test split</li>
+                <li>Validation set</li>
+                <li>K-Fold cross-validation</li>
+                <li>Stratified splitting (for imbalanced data)</li>
+            </ul>
+            <p>Cross-validation prevents unreliable results and overfitting.</p>
+        </section>
+
+        <section>
+            <h2>6. Model Evaluation</h2>
+            <p>The correct metrics must be used for each type of problem.</p>
+
+            <h3>6.1 Classification Metrics</h3>
+            <ul>
+                <li>Accuracy</li>
+                <li>Precision</li>
+                <li>Recall</li>
+                <li>F1 score</li>
+                <li>Confusion matrix</li>
+                <li>ROC curve</li>
+                <li>AUC score</li>
+            </ul>
+            <p>Learners must understand the tradeoff between precision and recall.</p>
+
+            <h3>6.2 Regression Metrics</h3>
+            <ul>
+                <li>MAE</li>
+                <li>MSE</li>
+                <li>RMSE</li>
+                <li>R² score</li>
+            </ul>
+            <p>Different datasets require different metrics.</p>
+        </section>
+
+        <section>
+            <h2>7. Hyperparameter Tuning</h2>
+            <p>Models have parameters and hyperparameters.<br>
+                Hyperparameter tuning significantly improves performance.</p>
+            <p>Methods:</p>
+            <ul>
+                <li>Grid Search</li>
+                <li>Random Search</li>
+                <li>Bayesian optimization (advanced)</li>
+            </ul>
+            <p>Hyperparameter tuning should be applied after building a baseline model.</p>
+        </section>
+
+        <section>
+            <h2>8. Practical Exercises and Mini Projects</h2>
+            <p>These projects must be completed to gain practical mastery.</p>
+
+            <h3>Project 1: House Price Prediction (Regression)</h3>
+            <p>Tasks:</p>
+            <ul>
+                <li>Load dataset</li>
+                <li>Perform full cleaning</li>
+                <li>Select features</li>
+                <li>Train Linear Regression</li>
+                <li>Train Random Forest Regression</li>
+                <li>Compare metrics</li>
+                <li>Visualize predictions vs actual data</li>
+            </ul>
+            <p>Objective: Understand regression deeply.</p>
+
+            <h3>Project 2: Spam Detection (Classification)</h3>
+            <p>Tasks:</p>
+            <ul>
+                <li>Clean text</li>
+                <li>Convert text to numerical features (bag-of-words or TF-IDF)</li>
+                <li>Train Logistic Regression and Naive Bayes</li>
+                <li>Evaluate using precision and recall</li>
+                <li>Visualize confusion matrix</li>
+            </ul>
+            <p>Objective: Learn classification and text preprocessing.</p>
+
+            <h3>Project 3: Customer Churn Prediction</h3>
+            <p>Tasks:</p>
+            <ul>
+                <li>Handle categorical and numerical data</li>
+                <li>Encode features</li>
+                <li>Train multiple models (Logistic Regression, Random Forest, XGBoost)</li>
+                <li>Tune hyperparameters</li>
+                <li>Rank models by performance</li>
+            </ul>
+            <p>Objective: Learn end-to-end ML pipeline.</p>
+
+            <h3>Project 4: Recommendation System (Basic)</h3>
+            <p>Tasks:</p>
+            <ul>
+                <li>Create user-item matrix</li>
+                <li>Implement collaborative filtering or simple similarity-based recommendations</li>
+                <li>Evaluate results</li>
+            </ul>
+            <p>Objective: Understand unsupervised-like modeling with similarity.</p>
+        </section>
+
+        <section>
+            <h2>9. What Learners Should Avoid</h2>
+            <ul>
+                <li>Do not memorize algorithms; understand their intuition.</li>
+                <li>Do not skip evaluation metrics; they are essential.</li>
+                <li>Do not start with deep learning before mastering classical ML.</li>
+                <li>Do not blindly trust accuracy; always inspect precision and recall.</li>
+                <li>Do not tune hyperparameters before building a baseline model.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>10. Expected Outcome of Phase 4</h2>
+            <p>By the end of this phase, learners should be able to:</p>
+            <ul>
+                <li>Identify whether a ML problem is classification or regression</li>
+                <li>Understand and implement major ML algorithms</li>
+                <li>Perform complete model training and evaluation</li>
+                <li>Compare models and select the best one</li>
+                <li>Tune hyperparameters effectively</li>
+                <li>Build end-to-end ML pipelines</li>
+                <li>Read ML research or documentation with clarity</li>
+                <li>Prepare for Deep Learning (Phase 5) with confidence</li>
+            </ul>
+            <p><strong>Phase 4 turns a beginner into a capable machine learning practitioner ready for advanced
+                    study.</strong></p>
+        </section>
+
+        <a href="index.html" class="back-link" style="margin-top: 30px">Back to Main Roadmap</a>        <footer>
+            <hr>
+            <div class="footer-grid">
+                <div>
+                    <h3>About This Roadmap</h3>
+                    <p>
+                        A comprehensive, phase-by-phase guide designed to transform beginners into industry-ready AI practitioners. 
+                        Follow the structured path from Python basics to advanced AI topics.
+                    </p>
+                </div>
+                <div>
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#phase1">Phase 1: Programming Foundation</a></li>
+                        <li><a href="index.html#phase2">Phase 2: Math for ML</a></li>
+                        <li><a href="index.html#phase3">Phase 3: Data Handling</a></li>
+                        <li><a href="index.html#phase4">Phase 4: Machine Learning Core</a></li>
+                        <li><a href="index.html#phase5">Phase 5: Deep Learning</a></li>
+                        <li><a href="index.html#phase6">Phase 6: NLP & LLMs</a></li>
+                        <li><a href="index.html#phase7">Phase 7: MLOps & Deployment</a></li>
+                        <li><a href="index.html#phase8">Phase 8: Advanced AI Topics</a></li>
+                        <li><a href="index.html#phase9">Phase 9: Portfolio & Interview Prep</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Learning Path</h3>
+                    <p>
+                        <strong>Estimated Timeline:</strong> 6-12+ months<br>
+                        <strong>Commitment:</strong> 10-15 hours/week<br>
+                        <strong>Projects Required:</strong> 8-12 portfolio projects<br>
+                        <strong>Outcome:</strong> Industry-ready AI practitioner
+                    </p>
+                </div>
+            </div>
+            <hr>
+            <div class="footer-bottom">
+                <p style="font-size: 14px;">
+                    <strong>Complete Machine Learning & Deep Learning Roadmap</strong>
+                </p>
+                <p style="font-size: 13px;">
+                    From Zero to AI Engineer — A Systematic Approach to Modern AI Development
+                </p>
+                <p style="font-size: 12px;">
+                    © 2025 AI Learning Roadmap | Designed for aspiring AI practitioners worldwide
+                </p>
+            </div>
+        </footer>
+    </div>
+<script src="shared-scripts.js"></script>
+</body>
+
+</html>

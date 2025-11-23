@@ -1,0 +1,420 @@
+﻿<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Phase 2 — Math for ML (Detailed Guide)</title>
+    <link rel="stylesheet" href="shared-styles.css">
+    <style>
+        /* Page-specific styles */
+        header {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px double var(--border-color)
+        }
+
+        h1 {
+            margin-top: 20px;
+            margin-bottom: 10px;
+            text-decoration: underline;
+            text-align: center
+        }
+
+        h2 {
+            margin-top: 20px;
+            margin-bottom: 10px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 5px
+        }
+
+        h3 {
+            margin-top: 20px;
+            margin-bottom: 10px
+        }
+
+        h4 {
+            margin-top: 20px;
+            margin-bottom: 10px
+        }
+
+        p {
+            line-height: 1.6;
+            margin: 10px 0
+        }
+
+        ul {
+            line-height: 1.6;
+            margin: 10px 0
+        }
+
+        pre {
+            margin: 10px 0
+        }
+
+        section {
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 3px ridge var(--border-color);
+            background: var(--card-bg);
+            position: relative
+        }
+
+        section::before {
+            content: "";
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            border: 1px solid var(--border-color);
+            pointer-events: none
+        }
+
+        .meta {
+            margin-bottom: 10px;
+            font-style: italic;
+            border-left: 3px solid var(--border-color);
+            padding-left: 10px;
+            font-family: 'Palatino Linotype', 'Book Antiqua', serif
+        }
+    </style>
+</head>
+
+<body>
+<div id="progress-bar"></div>
+
+<div id="top-toolbar">
+    <div id="toolbar-left">
+        <button id="menu-toggle">☰ Menu</button>
+        <div style="font-weight:bold;font-size:18px;font-family:'Impact',sans-serif;letter-spacing:1px">AI ROADMAP</div>
+    </div>
+    <div id="toolbar-right">
+        <div id="search-container">
+            <input type="text" id="search-input" placeholder="Search roadmap..." />
+            <div id="search-results"></div>
+        </div>
+        <button id="theme-toggle"><span class="theme-icon">◐</span> Theme</button>
+    </div>
+</div>
+
+<nav id="sidebar">
+    <h3>Navigation</h3>
+    <ul>
+        <li><a href="index.html"><span class="nav-icon">⌂</span> Home</a></li>
+        <li><a href="index.html#phase1"><span class="nav-number">1</span> Programming</a></li>
+        <li><a href="index.html#phase2"><span class="nav-number">2</span> Math for ML</a></li>
+        <li><a href="index.html#phase3"><span class="nav-number">3</span> Data Handling</a></li>
+        <li><a href="index.html#phase4"><span class="nav-number">4</span> ML Core</a></li>
+        <li><a href="index.html#phase5"><span class="nav-number">5</span> Deep Learning</a></li>
+        <li><a href="index.html#phase6"><span class="nav-number">6</span> NLP & LLMs</a></li>
+        <li><a href="index.html#phase7"><span class="nav-number">7</span> MLOps</a></li>
+        <li><a href="index.html#phase8"><span class="nav-number">8</span> Advanced Topics</a></li>
+        <li><a href="index.html#phase9"><span class="nav-number">9</span> Portfolio</a></li>
+    </ul>
+</nav>
+
+    <div class="container">
+        <a href="index.html" class="back-link">Back to Main Roadmap</a>
+
+        <h1>Phase 2 — Math for Machine Learning (Teacher–Student Style Guide)</h1>
+
+        <p><strong>Duration:</strong> 4 weeks<br>
+            <strong>Goal:</strong> Build the exact amount of math needed for ML & DL — nothing extra, nothing scary.
+        </p>
+
+        <section>
+            <h2>Before You Start — Read This</h2>
+            <p>Phase 2 math is NOT like your school math where you memorize formulas.<br>
+                Here, you learn how math builds ML models.</p>
+            <p>You are not learning math to score marks —<br>
+                You're learning math to understand how AI thinks.</p>
+            <p>I'll tell you exactly what to do, what not to do, and how to practice.</p>
+            <p>Let's begin.</p>
+        </section>
+
+        <section>
+            <h2>WEEK 1 — Linear Algebra (The Foundation of ML & DL)</h2>
+            <h3>1. What you must learn</h3>
+            <p><strong>Vectors</strong><br>
+                Think of a vector as a list of numbers:<br>
+                [height, weight, age] — this is a vector representing a person.</p>
+
+            <p><strong>Matrices</strong><br>
+                A matrix is just many vectors stacked.<br>
+                Every dataset you use is essentially a matrix.</p>
+
+            <p><strong>Dot Product</strong><br>
+                This is the most important operation.<br>
+                In neural networks, every neuron does:</p>
+            <pre><code>output = w1*x1 + w2*x2 + w3*x3 + ...</code></pre>
+            <p>This is a dot product.</p>
+
+            <p><strong>Matrix Multiplication</strong><br>
+                Used in every ML/DL model (Linear Regression → CNNs → Transformers).</p>
+
+            <h3>2. How to learn it (step-by-step)</h3>
+            <ul>
+                <li>Watch short visual videos (3Blue1Brown — "Essence of Linear Algebra").</li>
+                <li>Take a notebook. Re-draw what you understood.</li>
+                <li>Implement vector addition, dot product, and matrix multiplication manually on paper.</li>
+                <li>THEN try with Python + NumPy (to see how easy computers do it).</li>
+            </ul>
+
+            <h3>3. What NOT to do</h3>
+            <ul>
+                <li>Don't try to learn determinants, advanced theorems, proofs.</li>
+                <li>Don't aim for perfection — intuition is enough.</li>
+                <li>Don't spend more than 1 week here.</li>
+            </ul>
+
+            <h3>Practice Exercises</h3>
+            <ul>
+                <li>Multiply two 2×2 matrices on paper.</li>
+                <li>Compute dot product of two 3-dim vectors.</li>
+                <li>Using Python, recreate matrix multiplication using 3 nested loops.</li>
+                <li>Then redo it using NumPy: A @ B.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>WEEK 2 — Calculus & Optimization (How Models Learn)</h2>
+            <h3>1. Derivatives & Gradients</h3>
+            <p>In ML, a derivative tells you how fast the error changes.</p>
+            <ul>
+                <li>If error increases → bad direction</li>
+                <li>If error decreases → good direction</li>
+            </ul>
+            <p>This is how a model learns weights.</p>
+
+            <h3>2. Gradient Descent</h3>
+            <p>This is the heart of machine learning.</p>
+            <p>Imagine you are blindfolded on a hill. You want to reach the lowest point.<br>
+                What do you do?<br>
+                Feel the slope<br>
+                Take small steps downward<br>
+                Keep going until you reach the minimum</p>
+            <p>That's gradient descent.</p>
+
+            <p><strong>Key terms:</strong></p>
+            <ul>
+                <li><strong>Learning rate:</strong> How big the step is</li>
+                <li><strong>Loss function:</strong> What the model is trying to minimize</li>
+                <li><strong>Convergence:</strong> Reaching the lowest loss</li>
+            </ul>
+
+            <h3>How to learn it</h3>
+            <ul>
+                <li>Watch a video: "Gradient Descent — 3Blue1Brown".</li>
+                <li>Draw graphs in notebook showing slopes.</li>
+                <li>Understand how slope gives you direction.</li>
+                <li>Try to compute derivative of a simple function:
+                    <ul>
+                        <li>f(x) = x²</li>
+                        <li>f(x) = x³ + 2x</li>
+                    </ul>
+                </li>
+                <li>Only basics. No advanced calculus needed.</li>
+            </ul>
+
+            <h3>What NOT to do</h3>
+            <ul>
+                <li>Don't study integration, limits, proofs.</li>
+                <li>Don't do 20 derivative problems — 3–4 is enough.</li>
+                <li>Don't aim to derive formulas used in ML. We only need intuition.</li>
+            </ul>
+
+            <h3>Practice Exercises</h3>
+            <ul>
+                <li>Take the function f(x)=x²; write the derivative.</li>
+                <li>Pick a random point like x=4 — check slope.</li>
+                <li>Simulate gradient descent on paper:
+                    <ul>
+                        <li>x = 4</li>
+                        <li>learning rate = 0.1</li>
+                        <li>update rule: x = x − learning_rate * derivative</li>
+                        <li>Do 3 steps.</li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>WEEK 3 — Probability & Statistics (Understanding Data)</h2>
+            <h3>Mean, Variance, Standard Deviation</h3>
+            <p>Understand what these tell you:</p>
+            <ul>
+                <li><strong>Mean:</strong> average</li>
+                <li><strong>Variance:</strong> how spread data is</li>
+                <li><strong>Standard Deviation:</strong> how far values are from mean</li>
+            </ul>
+            <p>ML algorithms like Naïve Bayes, PCA depend heavily on these.</p>
+
+            <h3>Probability Distributions</h3>
+            <p>Learn these 3 only:</p>
+            <ul>
+                <li><strong>Normal (Gaussian):</strong> bell-curve</li>
+                <li><strong>Bernoulli:</strong> yes/no</li>
+                <li><strong>Binomial:</strong> repeated yes/no events</li>
+            </ul>
+
+            <h3>Bayes' Theorem</h3>
+            <p>Used in:</p>
+            <ul>
+                <li>Naive Bayes</li>
+                <li>Spam filtering</li>
+                <li>Probabilistic models</li>
+            </ul>
+            <p>You only need conceptual understanding.</p>
+
+            <h3>Likelihood</h3>
+            <p>This measures how probable the data is for a given parameter.<br>
+                Used in:</p>
+            <ul>
+                <li>Logistic regression training</li>
+                <li>Maximum likelihood estimation (MLE)</li>
+            </ul>
+
+            <h3>How to Study</h3>
+            <ul>
+                <li>Watch videos from Khan Academy.</li>
+                <li>Take a small dataset and compute mean, variance manually.</li>
+                <li>Visualize distributions using Matplotlib.</li>
+            </ul>
+
+            <h3>What NOT to do</h3>
+            <ul>
+                <li>Don't study permutation, combination unless needed.</li>
+                <li>Don't learn advanced statistics like t-tests, chi-square, etc.</li>
+                <li>Don't memorize formulas. Understand intuitions.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>WEEK 4 — Practical Math Projects</h2>
+            <p>This is the most important part.<br>
+                Math becomes useful only when you apply it.</p>
+
+            <h3>Project 1: Matrix Multiplication</h3>
+            <ul>
+                <li>Implement with 3 loops</li>
+                <li>Implement with NumPy</li>
+                <li>Measure time difference</li>
+            </ul>
+            <p>You'll understand how optimized NumPy is.</p>
+
+            <h3>Project 2: Gradient Descent Regression</h3>
+            <p>You will:</p>
+            <ul>
+                <li>Take y=2x+3 + noise</li>
+                <li>Start with random slope & intercept</li>
+                <li>Use gradient descent to adjust them</li>
+                <li>Make your model learn the correct values</li>
+            </ul>
+            <p>This teaches:</p>
+            <ul>
+                <li>Loss function</li>
+                <li>Gradients</li>
+                <li>Convergence</li>
+            </ul>
+
+            <h3>Project 3: Distribution Visualization</h3>
+            <p>Take random data and plot:</p>
+            <ul>
+                <li>Histogram</li>
+                <li>PDF</li>
+                <li>CDF</li>
+            </ul>
+            <p>You will visually understand probability for the first time.</p>
+        </section>
+
+        <section>
+            <h2>What You Should Focus On</h2>
+            <h3>DO THIS</h3>
+            <ul>
+                <li>Gain intuition</li>
+                <li>Draw graphs</li>
+                <li>Implement small exercises</li>
+                <li>Ask "why does this matter in ML?"</li>
+                <li>Do the mini-projects</li>
+                <li>Spend 30–45 minutes daily</li>
+            </ul>
+
+            <h3>DO NOT DO THIS</h3>
+            <ul>
+                <li>Don't open advanced math books</li>
+                <li>Don't try to become a mathematician</li>
+                <li>Don't spend weeks stuck on small formulas</li>
+                <li>Don't try to memorize equations</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Final Goal of Phase 2</h2>
+            <p>By the end of these 4 weeks, you should be able to:</p>
+            <ul>
+                <li>Explain vectors, matrices, and dot products</li>
+                <li>Compute gradients intuitively</li>
+                <li>Understand how gradient descent optimizes a model</li>
+                <li>Describe normal, bernoulli, and binomial distributions</li>
+                <li>Compute mean & variance of any dataset</li>
+                <li>Write basic mathematical operations in Python</li>
+                <li>Understand ML algorithms deeply when you reach Phase 4</li>
+            </ul>
+
+            <p><strong>If you achieve these, your ML foundation will be stronger than 90% of beginners.</strong></p>
+        </section>
+
+        <a href="index.html" class="back-link" style="margin-top: 30px">Back to Main Roadmap</a>        <footer>
+            <hr>
+            <div class="footer-grid">
+                <div>
+                    <h3>About This Roadmap</h3>
+                    <p>
+                        A comprehensive, phase-by-phase guide designed to transform beginners into industry-ready AI practitioners. 
+                        Follow the structured path from Python basics to advanced AI topics.
+                    </p>
+                </div>
+                <div>
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#phase1">Phase 1: Programming Foundation</a></li>
+                        <li><a href="index.html#phase2">Phase 2: Math for ML</a></li>
+                        <li><a href="index.html#phase3">Phase 3: Data Handling</a></li>
+                        <li><a href="index.html#phase4">Phase 4: Machine Learning Core</a></li>
+                        <li><a href="index.html#phase5">Phase 5: Deep Learning</a></li>
+                        <li><a href="index.html#phase6">Phase 6: NLP & LLMs</a></li>
+                        <li><a href="index.html#phase7">Phase 7: MLOps & Deployment</a></li>
+                        <li><a href="index.html#phase8">Phase 8: Advanced AI Topics</a></li>
+                        <li><a href="index.html#phase9">Phase 9: Portfolio & Interview Prep</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Learning Path</h3>
+                    <p>
+                        <strong>Estimated Timeline:</strong> 6-12+ months<br>
+                        <strong>Commitment:</strong> 10-15 hours/week<br>
+                        <strong>Projects Required:</strong> 8-12 portfolio projects<br>
+                        <strong>Outcome:</strong> Industry-ready AI practitioner
+                    </p>
+                </div>
+            </div>
+            <hr>
+            <div class="footer-bottom">
+                <p style="font-size: 14px;">
+                    <strong>Complete Machine Learning & Deep Learning Roadmap</strong>
+                </p>
+                <p style="font-size: 13px;">
+                    From Zero to AI Engineer — A Systematic Approach to Modern AI Development
+                </p>
+                <p style="font-size: 12px;">
+                    © 2025 AI Learning Roadmap | Designed for aspiring AI practitioners worldwide
+                </p>
+            </div>
+        </footer>
+    </div>
+<script src="shared-scripts.js"></script>
+</body>
+
+</html>

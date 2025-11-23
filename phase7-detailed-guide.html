@@ -1,0 +1,541 @@
+﻿<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Phase 7 — MLOps & Deployment (Detailed Guide)</title>
+    <link rel="stylesheet" href="shared-styles.css">
+    <style>
+        /* Page-specific styles */
+        header {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px double var(--border-color)
+        }
+
+        h1 {
+            margin-top: 20px;
+            margin-bottom: 10px;
+            text-decoration: underline;
+            text-align: center
+        }
+
+        h2 {
+            margin-top: 20px;
+            margin-bottom: 10px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 5px
+        }
+
+        h3, h4 {
+            margin-top: 20px;
+            margin-bottom: 10px
+        }
+
+        p, ul {
+            line-height: 1.6;
+            margin: 10px 0
+        }
+
+        pre {
+            margin: 10px 0
+        }
+
+        section {
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 3px ridge var(--border-color);
+            background: var(--card-bg);
+            position: relative
+        }
+
+        section::before {
+            content: "";
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            border: 1px solid var(--border-color);
+            pointer-events: none
+        }
+
+        .meta {
+            margin-bottom: 10px;
+            font-style: italic;
+            border-left: 3px solid var(--border-color);
+            padding-left: 10px;
+            font-family: 'Palatino Linotype', 'Book Antiqua', serif
+        }
+    </style>
+</head>
+
+<body>
+<div id="progress-bar"></div>
+
+<div id="top-toolbar">
+    <div id="toolbar-left">
+        <button id="menu-toggle">☰ Menu</button>
+        <div style="font-weight:bold;font-size:18px;font-family:'Impact',sans-serif;letter-spacing:1px">AI ROADMAP</div>
+    </div>
+    <div id="toolbar-right">
+        <div id="search-container">
+            <input type="text" id="search-input" placeholder="Search roadmap..." />
+            <div id="search-results"></div>
+        </div>
+        <button id="theme-toggle"><span class="theme-icon">◐</span> Theme</button>
+    </div>
+</div>
+
+<nav id="sidebar">
+    <h3>Navigation</h3>
+    <ul>
+        <li><a href="index.html"><span class="nav-icon">⌂</span> Home</a></li>
+        <li><a href="index.html#phase1"><span class="nav-number">1</span> Programming</a></li>
+        <li><a href="index.html#phase2"><span class="nav-number">2</span> Math for ML</a></li>
+        <li><a href="index.html#phase3"><span class="nav-number">3</span> Data Handling</a></li>
+        <li><a href="index.html#phase4"><span class="nav-number">4</span> ML Core</a></li>
+        <li><a href="index.html#phase5"><span class="nav-number">5</span> Deep Learning</a></li>
+        <li><a href="index.html#phase6"><span class="nav-number">6</span> NLP & LLMs</a></li>
+        <li><a href="index.html#phase7"><span class="nav-number">7</span> MLOps</a></li>
+        <li><a href="index.html#phase8"><span class="nav-number">8</span> Advanced Topics</a></li>
+        <li><a href="index.html#phase9"><span class="nav-number">9</span> Portfolio</a></li>
+    </ul>
+</nav>
+
+    <div class="container">
+        <a href="index.html" class="back-link">Back to Main Roadmap</a>
+
+        <h1>Phase 7 — MLOps & Model Deployment</h1>
+
+        <p><strong>Duration:</strong> 8 Weeks<br>
+            <strong>Objective:</strong> Learn how to deploy, monitor, automate, and maintain machine learning models in
+            real-world environments.
+            This phase turns prototypes into production-ready systems, the skills companies value most.
+        </p>
+
+        <section>
+            <h2>1. Introduction: Why MLOps Is Critical</h2>
+            <p>Building a model is only a small part of the ML lifecycle.<br>
+                Real-world AI requires:</p>
+            <ul>
+                <li>Deployment</li>
+                <li>Monitoring</li>
+                <li>Version control</li>
+                <li>Automated retraining</li>
+                <li>Scalable infrastructure</li>
+                <li>Reproducibility</li>
+                <li>Error tracking</li>
+            </ul>
+            <p>MLOps (Machine Learning Operations) is the combination of:</p>
+            <ul>
+                <li>Machine Learning</li>
+                <li>DevOps</li>
+                <li>Software Engineering</li>
+                <li>Data Engineering</li>
+            </ul>
+            <p>It ensures ML systems survive outside the notebook.</p>
+        </section>
+
+        <section>
+            <h2>2. The ML System Lifecycle</h2>
+            <p>Every production AI system must follow a standardized lifecycle:</p>
+            <ul>
+                <li>Data Collection</li>
+                <li>Data Versioning</li>
+                <li>Model Training</li>
+                <li>Model Storage</li>
+                <li>Deployment (API, batch jobs, streaming)</li>
+                <li>Monitoring (performance, drift, errors)</li>
+                <li>Retraining (manual or automated)</li>
+            </ul>
+            <p>Phase 7 teaches each of these steps.</p>
+        </section>
+
+        <section>
+            <h2>3. Version Control and Experiment Tracking</h2>
+
+            <h3>3.1 Git and GitHub</h3>
+            <p>Before deploying ML models, learners must have full control over:</p>
+            <ul>
+                <li>Source code versioning</li>
+                <li>Branching and merging</li>
+                <li>Pull requests</li>
+                <li>Maintaining reproducible project structure</li>
+            </ul>
+            <p>Every ML project should be a Git repository.</p>
+
+            <h3>3.2 Experiment Tracking</h3>
+            <p>Tracking experiments prevents confusion and makes model training reproducible.</p>
+            <p>Tools to learn:</p>
+            <ul>
+                <li>MLflow</li>
+                <li>Weights & Biases (W&B)</li>
+                <li>TensorBoard</li>
+            </ul>
+            <p>Important features:</p>
+            <ul>
+                <li>Logging metrics and hyperparameters</li>
+                <li>Tracking artifacts</li>
+                <li>Comparing experiments</li>
+                <li>Storing models</li>
+            </ul>
+            <p>Experiment tracking becomes crucial during hyperparameter tuning.</p>
+        </section>
+
+        <section>
+            <h2>4. Model Packaging and Containerization</h2>
+
+            <h3>4.1 Introduction to Docker</h3>
+            <p>Docker is essential for packaging models along with dependencies.</p>
+            <p>Learn:</p>
+            <ul>
+                <li>Writing Dockerfiles</li>
+                <li>Building images</li>
+                <li>Running containers</li>
+                <li>Exposing ports</li>
+                <li>Managing environment variables</li>
+            </ul>
+            <p>A model packaged in a Docker container runs identically on any machine.</p>
+
+            <h3>4.2 Docker Best Practices</h3>
+            <ul>
+                <li>Use lightweight base images</li>
+                <li>Avoid bloated dependencies</li>
+                <li>Use .dockerignore</li>
+                <li>Keep images small</li>
+                <li>Separate build and runtime stages (multi-stage builds)</li>
+            </ul>
+            <p>These practices ensure fast deployment.</p>
+        </section>
+
+        <section>
+            <h2>5. Building Model APIs</h2>
+
+            <h3>5.1 FastAPI (Recommended)</h3>
+            <p>FastAPI is the most popular modern Python framework for ML deployment.</p>
+            <p>Learn:</p>
+            <ul>
+                <li>Creating endpoints</li>
+                <li>Handling JSON requests</li>
+                <li>Returning predictions</li>
+                <li>CORS</li>
+                <li>Request validation</li>
+                <li>Using Pydantic models</li>
+            </ul>
+            <p>FastAPI makes model serving efficient and production-ready.</p>
+
+            <h3>5.2 Flask (Alternate Option)</h3>
+            <p>Flask is simpler but less feature-rich.<br>
+                Learn only for compatibility with legacy systems.</p>
+
+            <h3>5.3 Serving Models</h3>
+            <p>A model API must:</p>
+            <ul>
+                <li>Load the model once</li>
+                <li>Preprocess incoming data</li>
+                <li>Run inference</li>
+                <li>Postprocess and return predictions</li>
+            </ul>
+            <p>Understand thread-safety and batching concepts.</p>
+        </section>
+
+        <section>
+            <h2>6. Production Deployment Strategies</h2>
+
+            <h3>6.1 Deployment Environments</h3>
+            <p>Learn how to deploy ML applications to:</p>
+            <ul>
+                <li>AWS (EC2, ECS, Lambda, Sagemaker)</li>
+                <li>Google Cloud (GCE, Cloud Run, Vertex AI)</li>
+                <li>Azure</li>
+                <li>Render</li>
+                <li>Railway</li>
+                <li>Docker on a VPS</li>
+            </ul>
+            <p>Start with simple cloud hosting and progress to managed ML platforms.</p>
+
+            <h3>6.2 CI/CD Pipelines</h3>
+            <p>Continuous Integration and Continuous Deployment ensure models update automatically.</p>
+            <p>Learn:</p>
+            <ul>
+                <li>GitHub Actions</li>
+                <li>GitLab CI</li>
+                <li>Jenkins</li>
+            </ul>
+            <p>Pipeline tasks:</p>
+            <ul>
+                <li>Run tests</li>
+                <li>Build Docker images</li>
+                <li>Push to container registry</li>
+                <li>Deploy automatically</li>
+            </ul>
+            <p>CI/CD reduces manual errors.</p>
+        </section>
+
+        <section>
+            <h2>7. Model Monitoring and Logging</h2>
+
+            <h3>7.1 Monitoring Predictions</h3>
+            <p>Monitor for:</p>
+            <ul>
+                <li>Latency</li>
+                <li>Errors</li>
+                <li>Server load</li>
+                <li>Response quality</li>
+                <li>Prediction drift</li>
+            </ul>
+            <p>Tools:</p>
+            <ul>
+                <li>Prometheus + Grafana</li>
+                <li>AWS CloudWatch</li>
+                <li>Elastic Stack (ELK)</li>
+            </ul>
+
+            <h3>7.2 Data Drift & Concept Drift</h3>
+            <p>In production, data changes over time.</p>
+            <p>You must learn to detect:</p>
+            <ul>
+                <li>Data drift (input distribution changes)</li>
+                <li>Concept drift (relationship between input and output changes)</li>
+            </ul>
+            <p>Actions:</p>
+            <ul>
+                <li>Retraining</li>
+                <li>Alerts</li>
+                <li>Updating preprocessing rules</li>
+            </ul>
+
+            <h3>7.3 Logging</h3>
+            <p>Proper logging helps diagnose issues.</p>
+            <p>Log:</p>
+            <ul>
+                <li>Incoming requests</li>
+                <li>Prediction outputs</li>
+                <li>Errors/exceptions</li>
+                <li>System metrics</li>
+            </ul>
+            <p>Tools:</p>
+            <ul>
+                <li>Logging module</li>
+                <li>ELK stack</li>
+                <li>Sentry</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>8. Model Retraining & Pipelines</h2>
+
+            <h3>8.1 Batch vs Real-Time Training</h3>
+            <p>Models can be retrained:</p>
+            <ul>
+                <li>Weekly</li>
+                <li>Monthly</li>
+                <li>When data drift is detected</li>
+                <li>Continuously using streaming data</li>
+            </ul>
+            <p>Learn which strategy fits which use case.</p>
+
+            <h3>8.2 Orchestration Tools</h3>
+            <p>Use orchestrators to schedule and automate tasks:</p>
+            <ul>
+                <li>Apache Airflow</li>
+                <li>Prefect</li>
+                <li>Dagster</li>
+                <li>Kubeflow (advanced)</li>
+            </ul>
+            <p>Key concepts:</p>
+            <ul>
+                <li>DAGs (Directed Acyclic Graphs)</li>
+                <li>Task scheduling</li>
+                <li>Workflow automation</li>
+                <li>Retry strategies</li>
+            </ul>
+
+            <h3>8.3 Data Versioning</h3>
+            <p>Use tools like:</p>
+            <ul>
+                <li>DVC (Data Version Control)</li>
+                <li>Git LFS</li>
+                <li>LakeFS</li>
+            </ul>
+            <p>Data versioning ensures reproducibility and traceability.</p>
+        </section>
+
+        <section>
+            <h2>9. Scaling and Optimizing Models</h2>
+
+            <h3>9.1 Horizontal and Vertical Scaling</h3>
+            <p>Learn:</p>
+            <ul>
+                <li>Increasing machine size (vertical scaling)</li>
+                <li>Running multiple containers (horizontal scaling)</li>
+            </ul>
+            <p>ML systems often require distributed architecture.</p>
+
+            <h3>9.2 Load Balancing</h3>
+            <p>Ensure models remain accessible under heavy traffic.</p>
+            <p>Tools:</p>
+            <ul>
+                <li>Nginx</li>
+                <li>AWS ELB</li>
+                <li>Kubernetes services</li>
+            </ul>
+
+            <h3>9.3 Model Optimization</h3>
+            <p>Techniques include:</p>
+            <ul>
+                <li>Quantization</li>
+                <li>Pruning</li>
+                <li>Distillation</li>
+                <li>ONNX optimization</li>
+                <li>TorchScript</li>
+                <li>Batch inference</li>
+            </ul>
+            <p>These techniques make models faster and cheaper to run.</p>
+        </section>
+
+        <section>
+            <h2>10. Security Fundamentals in MLOps</h2>
+            <p>Learn basics of:</p>
+            <ul>
+                <li>API rate limiting</li>
+                <li>Authentication and authorization</li>
+                <li>Environment variable secrets</li>
+                <li>Secure model storage</li>
+                <li>Preventing prompt injection (for LLMs)</li>
+                <li>Preventing data leakage</li>
+            </ul>
+            <p>Security is critical for production systems.</p>
+        </section>
+
+        <section>
+            <h2>11. Mini Projects (Mandatory)</h2>
+
+            <h3>Project 1: Deploy a FastAPI Model with Docker</h3>
+            <p>Steps:</p>
+            <ul>
+                <li>Train a simple model (classification)</li>
+                <li>Build a FastAPI service</li>
+                <li>Create a Dockerfile</li>
+                <li>Run the container locally</li>
+                <li>Test predictions with POST requests</li>
+            </ul>
+            <p>Outcome: Understanding model serving.</p>
+
+            <h3>Project 2: CI/CD Pipeline with GitHub Actions</h3>
+            <p>Tasks:</p>
+            <ul>
+                <li>Run automated tests</li>
+                <li>Build Docker image</li>
+                <li>Push to DockerHub</li>
+                <li>Redeploy server</li>
+            </ul>
+            <p>Outcome: Automating deployments.</p>
+
+            <h3>Project 3: Monitor Model Using Prometheus</h3>
+            <p>Steps:</p>
+            <ul>
+                <li>Expose metrics endpoint</li>
+                <li>Scrape metrics using Prometheus</li>
+                <li>Build dashboards in Grafana</li>
+            </ul>
+            <p>Outcome: Basic monitoring setup.</p>
+
+            <h3>Project 4: Build a Complete ML Pipeline with Airflow</h3>
+            <p>Tasks:</p>
+            <ul>
+                <li>Data ingestion</li>
+                <li>Feature engineering</li>
+                <li>Model training</li>
+                <li>Model evaluation</li>
+                <li>Automatic deployment</li>
+            </ul>
+            <p>Outcome: End-to-end automation.</p>
+        </section>
+
+        <section>
+            <h2>12. Common Mistakes to Avoid</h2>
+            <ul>
+                <li>Deploying models without Docker</li>
+                <li>Ignoring monitoring and drift</li>
+                <li>Skipping experiment tracking</li>
+                <li>Hardcoding paths or credentials</li>
+                <li>Using CPU for tasks requiring GPU (or vice versa)</li>
+                <li>Not testing APIs before deployment</li>
+            </ul>
+            <p>MLOps requires disciplined engineering, not just modeling.</p>
+        </section>
+
+        <section>
+            <h2>13. Expected Outcome of Phase 7</h2>
+            <p>By the end of this phase, learners should be able to:</p>
+            <ul>
+                <li>Build and deploy ML APIs</li>
+                <li>Containerize applications using Docker</li>
+                <li>Set up CI/CD pipelines</li>
+                <li>Track experiments and version data</li>
+                <li>Monitor models in production</li>
+                <li>Handle drift and retraining</li>
+                <li>Build automated pipelines using Airflow or Prefect</li>
+                <li>Scale models using cloud infrastructure</li>
+                <li>Prepare LLM applications for production</li>
+            </ul>
+            <p><strong>Phase 7 represents the transition from a data scientist to an AI engineer capable of operating in
+                    real-world environments.</strong></p>
+        </section>
+
+        <a href="index.html" class="back-link" style="margin-top: 30px">Back to Main Roadmap</a>        <footer>
+            <hr>
+            <div class="footer-grid">
+                <div>
+                    <h3>About This Roadmap</h3>
+                    <p>
+                        A comprehensive, phase-by-phase guide designed to transform beginners into industry-ready AI practitioners. 
+                        Follow the structured path from Python basics to advanced AI topics.
+                    </p>
+                </div>
+                <div>
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#phase1">Phase 1: Programming Foundation</a></li>
+                        <li><a href="index.html#phase2">Phase 2: Math for ML</a></li>
+                        <li><a href="index.html#phase3">Phase 3: Data Handling</a></li>
+                        <li><a href="index.html#phase4">Phase 4: Machine Learning Core</a></li>
+                        <li><a href="index.html#phase5">Phase 5: Deep Learning</a></li>
+                        <li><a href="index.html#phase6">Phase 6: NLP & LLMs</a></li>
+                        <li><a href="index.html#phase7">Phase 7: MLOps & Deployment</a></li>
+                        <li><a href="index.html#phase8">Phase 8: Advanced AI Topics</a></li>
+                        <li><a href="index.html#phase9">Phase 9: Portfolio & Interview Prep</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Learning Path</h3>
+                    <p>
+                        <strong>Estimated Timeline:</strong> 6-12+ months<br>
+                        <strong>Commitment:</strong> 10-15 hours/week<br>
+                        <strong>Projects Required:</strong> 8-12 portfolio projects<br>
+                        <strong>Outcome:</strong> Industry-ready AI practitioner
+                    </p>
+                </div>
+            </div>
+            <hr>
+            <div class="footer-bottom">
+                <p style="font-size: 14px;">
+                    <strong>Complete Machine Learning & Deep Learning Roadmap</strong>
+                </p>
+                <p style="font-size: 13px;">
+                    From Zero to AI Engineer — A Systematic Approach to Modern AI Development
+                </p>
+                <p style="font-size: 12px;">
+                    © 2025 AI Learning Roadmap | Designed for aspiring AI practitioners worldwide
+                </p>
+            </div>
+        </footer>
+    </div>
+<script src="shared-scripts.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,507 @@
+﻿<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Phase 5 — Deep Learning (Detailed Guide)</title>
+    <link rel="stylesheet" href="shared-styles.css">
+    <style>
+        /* Page-specific styles */
+        header {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px double var(--border-color)
+        }
+
+        h1 {
+            margin-top: 20px;
+            margin-bottom: 10px;
+            text-decoration: underline;
+            text-align: center
+        }
+
+        h2 {
+            margin-top: 20px;
+            margin-bottom: 10px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 5px
+        }
+
+        h3, h4 {
+            margin-top: 20px;
+            margin-bottom: 10px
+        }
+
+        p, ul {
+            line-height: 1.6;
+            margin: 10px 0
+        }
+
+        pre {
+            margin: 10px 0
+        }
+
+        section {
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 3px ridge var(--border-color);
+            background: var(--card-bg);
+            position: relative
+        }
+
+        section::before {
+            content: "";
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            border: 1px solid var(--border-color);
+            pointer-events: none
+        }
+
+        .meta {
+            margin-bottom: 10px;
+            font-style: italic;
+            border-left: 3px solid var(--border-color);
+            padding-left: 10px;
+            font-family: 'Palatino Linotype', 'Book Antiqua', serif
+        }
+    </style>
+</head>
+
+<body>
+<div id="progress-bar"></div>
+
+<div id="top-toolbar">
+    <div id="toolbar-left">
+        <button id="menu-toggle">☰ Menu</button>
+        <div style="font-weight:bold;font-size:18px;font-family:'Impact',sans-serif;letter-spacing:1px">AI ROADMAP</div>
+    </div>
+    <div id="toolbar-right">
+        <div id="search-container">
+            <input type="text" id="search-input" placeholder="Search roadmap..." />
+            <div id="search-results"></div>
+        </div>
+        <button id="theme-toggle"><span class="theme-icon">◐</span> Theme</button>
+    </div>
+</div>
+
+<nav id="sidebar">
+    <h3>Navigation</h3>
+    <ul>
+        <li><a href="index.html"><span class="nav-icon">⌂</span> Home</a></li>
+        <li><a href="index.html#phase1"><span class="nav-number">1</span> Programming</a></li>
+        <li><a href="index.html#phase2"><span class="nav-number">2</span> Math for ML</a></li>
+        <li><a href="index.html#phase3"><span class="nav-number">3</span> Data Handling</a></li>
+        <li><a href="index.html#phase4"><span class="nav-number">4</span> ML Core</a></li>
+        <li><a href="index.html#phase5"><span class="nav-number">5</span> Deep Learning</a></li>
+        <li><a href="index.html#phase6"><span class="nav-number">6</span> NLP & LLMs</a></li>
+        <li><a href="index.html#phase7"><span class="nav-number">7</span> MLOps</a></li>
+        <li><a href="index.html#phase8"><span class="nav-number">8</span> Advanced Topics</a></li>
+        <li><a href="index.html#phase9"><span class="nav-number">9</span> Portfolio</a></li>
+    </ul>
+</nav>
+
+    <div class="container">
+        <a href="index.html" class="back-link">Back to Main Roadmap</a>
+
+        <h1>Phase 5 — Deep Learning (PyTorch Recommended)</h1>
+
+        <p><strong>Duration:</strong> 8–12 Weeks<br>
+            <strong>Objective:</strong> Develop strong conceptual understanding and practical skills in neural networks,
+            modern deep learning architectures, and PyTorch fundamentals.
+            Deep Learning is the core of modern AI, powering computer vision, speech recognition, NLP, and large
+            language models.
+        </p>
+
+        <section>
+            <h2>1. Introduction: Why Deep Learning Matters</h2>
+            <p>Deep learning enables models to discover complex patterns in large datasets.<br>
+                Where classical ML struggles with high-dimensional, unstructured, or nonlinear data, deep learning
+                succeeds because:</p>
+            <ul>
+                <li>It automatically learns features</li>
+                <li>It performs hierarchical representation learning</li>
+                <li>It scales with large datasets and compute</li>
+                <li>It powers state-of-the-art performance in most domains</li>
+            </ul>
+            <p>Phase 5 builds your foundation so that you can tackle computer vision, sequence modeling, and eventually
+                transformers and LLMs.</p>
+        </section>
+
+        <section>
+            <h2>2. Before You Start: Prerequisites</h2>
+            <p>Ensure the following concepts are solid:</p>
+            <ul>
+                <li>Linear algebra basics</li>
+                <li>Gradients and optimization (from Phase 2)</li>
+                <li>Machine learning workflow (from Phase 4)</li>
+                <li>Python fundamentals</li>
+                <li>Basic NumPy operations</li>
+            </ul>
+            <p>With these in place, you can learn deep learning effectively.</p>
+        </section>
+
+        <section>
+            <h2>3. Understanding the Structure of Neural Networks</h2>
+            <p>Neural networks consist of layers of connected nodes.</p>
+            <p>Key components:</p>
+            <ul>
+                <li>Input layer</li>
+                <li>Hidden layers</li>
+                <li>Output layer</li>
+            </ul>
+            <p>Each node computes:</p>
+            <p>Weighted sum → Activation function → Output</p>
+            <p>This simple structure builds powerful models when scaled.</p>
+        </section>
+
+        <section>
+            <h2>4. Core Deep Learning Concepts</h2>
+
+            <h3>4.1 Tensors</h3>
+            <p>Tensors are multi-dimensional arrays used as the basic data structure.</p>
+            <p>Understand:</p>
+            <ul>
+                <li>Tensor ranks</li>
+                <li>Shapes</li>
+                <li>Broadcasting</li>
+                <li>Tensor operations</li>
+                <li>GPU acceleration (CUDA)</li>
+            </ul>
+            <p>In PyTorch, the <code>torch.Tensor</code> object is central.</p>
+
+            <h3>4.2 Computational Graph</h3>
+            <p>Every operation in PyTorch builds a graph behind the scenes.<br>
+                This graph tracks how values depend on each other so that gradients can be computed automatically.</p>
+            <p>Learn:</p>
+            <ul>
+                <li>Forward pass</li>
+                <li>Backward pass</li>
+                <li>Autograd</li>
+            </ul>
+            <p>This is the foundation of training neural networks.</p>
+
+            <h3>4.3 Activation Functions</h3>
+            <p>These add non-linearity to neural networks.</p>
+            <p>Learn the following thoroughly:</p>
+            <ul>
+                <li>ReLU</li>
+                <li>Sigmoid</li>
+                <li>Tanh</li>
+                <li>Softmax</li>
+            </ul>
+            <p>Understand where each function is used and why.</p>
+
+            <h3>4.4 Loss Functions</h3>
+            <p>Loss functions quantify the error of predictions.</p>
+            <p>Important losses:</p>
+            <ul>
+                <li>Mean Squared Error (regression)</li>
+                <li>Cross-Entropy Loss (classification)</li>
+                <li>Binary Cross-Entropy Loss</li>
+                <li>Negative Log-Likelihood</li>
+            </ul>
+            <p>Loss function selection depends on the task.</p>
+
+            <h3>4.5 Optimizers</h3>
+            <p>Optimizers adjust weights to minimize loss.</p>
+            <p>Key optimizers:</p>
+            <ul>
+                <li>Stochastic Gradient Descent (SGD)</li>
+                <li>Adam</li>
+                <li>RMSprop</li>
+            </ul>
+            <p>Adam is widely used in deep learning because it converges faster.</p>
+        </section>
+
+        <section>
+            <h2>5. Building Neural Networks in PyTorch</h2>
+
+            <h3>5.1 Dataset Preparation</h3>
+            <p>Steps:</p>
+            <ul>
+                <li>Load dataset</li>
+                <li>Process features</li>
+                <li>Normalize inputs</li>
+                <li>Convert to tensors</li>
+                <li>Create DataLoader for batching</li>
+            </ul>
+            <p>Learn:</p>
+            <ul>
+                <li><code>torch.utils.data.Dataset</code></li>
+                <li><code>torch.utils.data.DataLoader</code></li>
+            </ul>
+
+            <h3>5.2 Model Architecture (nn.Module)</h3>
+            <p>In PyTorch, models inherit from <code>nn.Module</code>.</p>
+            <p>Key steps:</p>
+            <ul>
+                <li>Define layers in <code>__init__()</code></li>
+                <li>Write forward pass in <code>forward()</code></li>
+                <li>Instantiate the model</li>
+            </ul>
+            <p>Understand Sequential API as well.</p>
+
+            <h3>5.3 Training Loop</h3>
+            <p>A deep learning model requires a custom training loop.</p>
+            <p>Essential steps:</p>
+            <ul>
+                <li>Forward pass</li>
+                <li>Compute loss</li>
+                <li>Backpropagate gradients</li>
+                <li>Update weights</li>
+                <li>Repeat for epochs</li>
+            </ul>
+            <p>Learn:</p>
+            <ul>
+                <li><code>.backward()</code></li>
+                <li><code>.zero_grad()</code></li>
+                <li><code>.step()</code></li>
+            </ul>
+            <p>Mastering the training loop is critical.</p>
+
+            <h3>5.4 Evaluation Loop</h3>
+            <p>Separate from training:</p>
+            <ul>
+                <li>Run model in evaluation mode</li>
+                <li>Disable gradient calculation</li>
+                <li>Compute accuracy, loss</li>
+                <li>Use validation dataset</li>
+            </ul>
+            <p>Learn:</p>
+            <ul>
+                <li><code>torch.no_grad()</code></li>
+                <li><code>model.eval()</code></li>
+                <li><code>model.train()</code></li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>6. Major Deep Learning Architectures</h2>
+
+            <h3>6.1 Feed-Forward Neural Networks (MLP)</h3>
+            <p>The simplest network type.<br>
+                Used for tabular data, embeddings, and baseline experiments.</p>
+            <p>Learn:</p>
+            <ul>
+                <li>Hidden layers</li>
+                <li>Dropout</li>
+                <li>Batch normalization</li>
+                <li>Vanishing gradients</li>
+            </ul>
+            <p>MLPs teach you how networks behave internally.</p>
+
+            <h3>6.2 Convolutional Neural Networks (CNNs)</h3>
+            <p>Used for image data.</p>
+            <p>Key components:</p>
+            <ul>
+                <li>Convolution layers</li>
+                <li>Pooling layers</li>
+                <li>Feature maps</li>
+                <li>Stride and padding</li>
+                <li>Kernels and filters</li>
+                <li>Flattening and fully connected layers</li>
+            </ul>
+            <p>CNNs are used in:</p>
+            <ul>
+                <li>Image classification</li>
+                <li>Object detection</li>
+                <li>Segmentation</li>
+            </ul>
+            <p>Start with architectures like LeNet, AlexNet, and move to ResNet.</p>
+
+            <h3>6.3 Recurrent Neural Networks (RNN, LSTM, GRU)</h3>
+            <p>Used for sequence data such as text, speech, and time series.</p>
+            <p>Concepts:</p>
+            <ul>
+                <li>Recurrent connections</li>
+                <li>Hidden states</li>
+                <li>Vanishing gradient problem</li>
+                <li>Gated architectures (LSTM, GRU)</li>
+            </ul>
+            <p>These are essential precursors to transformers.</p>
+
+            <h3>6.4 Autoencoders</h3>
+            <p>Used for:</p>
+            <ul>
+                <li>Dimensionality reduction</li>
+                <li>Noise removal</li>
+                <li>Anomaly detection</li>
+            </ul>
+            <p>Learn the encoder–decoder structure.</p>
+
+            <h3>6.5 Generative Adversarial Networks (GANs)</h3>
+            <p>GANs involve two networks competing with each other.</p>
+            <p>Concepts:</p>
+            <ul>
+                <li>Generator</li>
+                <li>Discriminator</li>
+                <li>Adversarial loss</li>
+                <li>Training instability</li>
+            </ul>
+            <p>GANs are the foundation for modern image generation.</p>
+        </section>
+
+        <section>
+            <h2>7. Practical Deep Learning Skills</h2>
+            <p>Learners must master the following practical techniques:</p>
+            <ul>
+                <li>Data normalization</li>
+                <li>Weight initialization</li>
+                <li>Dropout for regularization</li>
+                <li>Early stopping</li>
+                <li>Learning rate scheduling</li>
+                <li>Using pretrained models</li>
+                <li>Transfer learning</li>
+            </ul>
+            <p>These skills significantly improve model performance.</p>
+        </section>
+
+        <section>
+            <h2>8. Hyperparameter Tuning in Deep Learning</h2>
+            <p>Key hyperparameters:</p>
+            <ul>
+                <li>Learning rate</li>
+                <li>Batch size</li>
+                <li>Number of layers</li>
+                <li>Hidden units</li>
+                <li>Dropout rate</li>
+                <li>Optimizer settings</li>
+                <li>Activation function choice</li>
+            </ul>
+            <p>Approach:</p>
+            <ul>
+                <li>Start with a baseline</li>
+                <li>Use systematic tuning</li>
+                <li>Track experiments (manual or using tools like WandB/MLflow)</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>9. Mini Projects (Mandatory)</h2>
+
+            <h3>Project 1: MNIST Handwritten Digit Classifier</h3>
+            <p>Tasks:</p>
+            <ul>
+                <li>Load MNIST dataset</li>
+                <li>Build an MLP</li>
+                <li>Train for 10 epochs</li>
+                <li>Achieve above 95% accuracy</li>
+                <li>Plot loss curves</li>
+            </ul>
+            <p>This teaches end-to-end deep learning.</p>
+
+            <h3>Project 2: CIFAR-10 Image Classifier</h3>
+            <p>Tasks:</p>
+            <ul>
+                <li>Build CNN model</li>
+                <li>Apply data augmentation</li>
+                <li>Train and evaluate</li>
+                <li>Analyze confusion matrix</li>
+            </ul>
+            <p>This introduces image processing.</p>
+
+            <h3>Project 3: Sentiment Analysis Using LSTM</h3>
+            <p>Tasks:</p>
+            <ul>
+                <li>Preprocess text</li>
+                <li>Convert text to embeddings</li>
+                <li>Train LSTM/GRU classifier</li>
+                <li>Evaluate accuracy and F1 score</li>
+            </ul>
+            <p>This introduces sequence modeling.</p>
+
+            <h3>Project 4: Transfer Learning with ResNet</h3>
+            <p>Tasks:</p>
+            <ul>
+                <li>Load pretrained ResNet model</li>
+                <li>Freeze layers</li>
+                <li>Fine-tune on a new dataset</li>
+                <li>Compare performance</li>
+            </ul>
+            <p>Transfer learning is widely used in industry.</p>
+        </section>
+
+        <section>
+            <h2>10. What Learners Should Avoid</h2>
+            <ul>
+                <li>Do not jump into transformers or LLMs without finishing foundational deep learning.</li>
+                <li>Do not rely solely on high-level libraries; understand the training loop.</li>
+                <li>Do not focus on achieving perfect accuracy; focus on understanding.</li>
+                <li>Do not use overly complex architectures early.</li>
+                <li>Do not ignore GPU/CPU memory constraints.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>11. Expected Outcome of Phase 5</h2>
+            <p>By completing this phase, learners will be able to:</p>
+            <ul>
+                <li>Understand and implement neural networks using PyTorch</li>
+                <li>Train, evaluate, and tune deep learning models</li>
+                <li>Work with image and text data pipelines</li>
+                <li>Understand convolution, recurrence, and representation learning</li>
+                <li>Apply pretrained models using transfer learning</li>
+                <li>Handle training challenges like overfitting and initialization</li>
+                <li>Prepare for advanced modern architectures (Transformers, LLMs)</li>
+            </ul>
+            <p><strong>Phase 5 is the turning point where a learner transitions from classical ML to modern AI
+                    engineering.</strong></p>
+        </section>
+
+        <a href="index.html" class="back-link" style="margin-top: 30px">Back to Main Roadmap</a>        <footer>
+            <hr>
+            <div class="footer-grid">
+                <div>
+                    <h3>About This Roadmap</h3>
+                    <p>
+                        A comprehensive, phase-by-phase guide designed to transform beginners into industry-ready AI practitioners. 
+                        Follow the structured path from Python basics to advanced AI topics.
+                    </p>
+                </div>
+                <div>
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#phase1">Phase 1: Programming Foundation</a></li>
+                        <li><a href="index.html#phase2">Phase 2: Math for ML</a></li>
+                        <li><a href="index.html#phase3">Phase 3: Data Handling</a></li>
+                        <li><a href="index.html#phase4">Phase 4: Machine Learning Core</a></li>
+                        <li><a href="index.html#phase5">Phase 5: Deep Learning</a></li>
+                        <li><a href="index.html#phase6">Phase 6: NLP & LLMs</a></li>
+                        <li><a href="index.html#phase7">Phase 7: MLOps & Deployment</a></li>
+                        <li><a href="index.html#phase8">Phase 8: Advanced AI Topics</a></li>
+                        <li><a href="index.html#phase9">Phase 9: Portfolio & Interview Prep</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Learning Path</h3>
+                    <p>
+                        <strong>Estimated Timeline:</strong> 6-12+ months<br>
+                        <strong>Commitment:</strong> 10-15 hours/week<br>
+                        <strong>Projects Required:</strong> 8-12 portfolio projects<br>
+                        <strong>Outcome:</strong> Industry-ready AI practitioner
+                    </p>
+                </div>
+            </div>
+            <hr>
+            <div class="footer-bottom">
+                <p style="font-size: 14px;">
+                    <strong>Complete Machine Learning & Deep Learning Roadmap</strong>
+                </p>
+                <p style="font-size: 13px;">
+                    From Zero to AI Engineer — A Systematic Approach to Modern AI Development
+                </p>
+                <p style="font-size: 12px;">
+                    © 2025 AI Learning Roadmap | Designed for aspiring AI practitioners worldwide
+                </p>
+            </div>
+        </footer>
+    </div>
+<script src="shared-scripts.js"></script>
+</body>
+
+</html>
