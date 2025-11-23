@@ -35,13 +35,29 @@ if (themeToggle) {
 const menuToggle = document.getElementById('menu-toggle');
 const sidebar = document.getElementById('sidebar');
 
+console.log('Script loaded - Menu button:', menuToggle);
+console.log('Script loaded - Sidebar:', sidebar);
+
 if (menuToggle && sidebar) {
-    menuToggle.addEventListener('click', function(e) {
+    console.log('Setting up menu toggle listener');
+    
+    // Use touchstart for mobile, click for desktop
+    menuToggle.addEventListener('touchstart', function(e) {
+        console.log('TOUCHSTART on menu button');
         e.preventDefault();
         e.stopPropagation();
         sidebar.classList.toggle('open');
         document.body.classList.toggle('menu-open', sidebar.classList.contains('open'));
-        console.log('Menu toggled, sidebar open:', sidebar.classList.contains('open'));
+        console.log('Menu toggled via TOUCH, sidebar open:', sidebar.classList.contains('open'));
+    }, { passive: false });
+    
+    menuToggle.addEventListener('click', function(e) {
+        console.log('CLICK on menu button');
+        e.preventDefault();
+        e.stopPropagation();
+        sidebar.classList.toggle('open');
+        document.body.classList.toggle('menu-open', sidebar.classList.contains('open'));
+        console.log('Menu toggled via CLICK, sidebar open:', sidebar.classList.contains('open'));
     });
     
     // Close sidebar when clicking on a link (mobile)
@@ -65,6 +81,8 @@ if (menuToggle && sidebar) {
             document.body.classList.remove('menu-open');
         }
     });
+} else {
+    console.error('ERROR: Menu toggle or sidebar element not found!');
 }
 
 // Sidebar Active Link
