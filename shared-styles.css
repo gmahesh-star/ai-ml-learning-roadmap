@@ -56,27 +56,32 @@ body {
     top: 0;
     left: 0;
     right: 0;
-    height: 60px;
+    min-height: 60px;
     background: var(--sidebar-bg);
     border-bottom: 3px solid var(--border-color);
     z-index: 1000;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 20px;
-    transition: all 0.3s
+    padding: 10px 15px;
+    transition: all 0.3s;
+    flex-wrap: wrap;
+    gap: 10px
 }
 
 #toolbar-left {
     display: flex;
     align-items: center;
-    gap: 15px
+    gap: 10px;
+    flex: 0 0 auto
 }
 
 #toolbar-right {
     display: flex;
     align-items: center;
-    gap: 15px
+    gap: 10px;
+    flex: 1 1 auto;
+    justify-content: flex-end
 }
 
 #menu-toggle {
@@ -122,9 +127,12 @@ body {
     color: var(--text-color);
     font-family: Verdana, Geneva, sans-serif;
     font-size: 14px;
-    width: 300px;
+    width: 100%;
+    max-width: 300px;
+    min-width: 150px;
     outline: none;
-    transition: all 0.3s
+    transition: all 0.3s;
+    box-sizing: border-box
 }
 
 #search-input:focus {
@@ -256,18 +264,94 @@ body {
     #menu-toggle {
         display: block
     }
-    #search-input {
-        width: 200px
-    }
     #sidebar {
         transform: translateX(-260px)
     }
     .container {
         margin-left: 0;
-        padding-top: 80px
+        padding: 80px 20px 20px 20px
     }
     #sidebar.open {
         transform: translateX(0)
+    }
+}
+
+@media(max-width:768px) {
+    #top-toolbar {
+        padding: 8px 10px;
+        min-height: auto
+    }
+    #toolbar-left {
+        gap: 8px
+    }
+    #toolbar-right {
+        gap: 8px;
+        flex-basis: 100%;
+        margin-top: 5px
+    }
+    #search-container {
+        flex: 1;
+        max-width: 100%
+    }
+    #search-input {
+        max-width: 100%;
+        font-size: 13px
+    }
+    #search-results {
+        width: calc(100vw - 30px);
+        right: auto;
+        left: 0
+    }
+    #theme-toggle {
+        padding: 6px 12px;
+        font-size: 13px;
+        white-space: nowrap
+    }
+    .container {
+        padding: 100px 15px 15px 15px;
+        font-size: 15px
+    }
+    h1 {
+        font-size: 24px
+    }
+    h2 {
+        font-size: 20px
+    }
+    h3 {
+        font-size: 17px
+    }
+    section.card {
+        padding: 12px
+    }
+}
+
+@media(max-width:480px) {
+    #toolbar-left div {
+        font-size: 14px !important
+    }
+    #menu-toggle {
+        padding: 6px 10px;
+        font-size: 13px
+    }
+    #theme-toggle {
+        padding: 6px 10px
+    }
+    .theme-icon {
+        margin-right: 3px
+    }
+    .container {
+        padding: 110px 10px 10px 10px
+    }
+    h1 {
+        font-size: 20px
+    }
+    h2 {
+        font-size: 18px
+    }
+    pre {
+        font-size: 12px;
+        padding: 8px;
+        overflow-x: auto
     }
 }
 
@@ -426,6 +510,23 @@ footer {
 
 @media(max-width:880px) {
     .footer-grid {
-        grid-template-columns: 1fr
+        grid-template-columns: 1fr;
+        gap: 20px
+    }
+}
+
+@media(max-width:480px) {
+    footer {
+        font-size: 14px
+    }
+    .footer-grid h3 {
+        font-size: 16px
+    }
+    .footer-grid p,
+    .footer-grid ul {
+        font-size: 13px
+    }
+    .footer-bottom p {
+        font-size: 12px !important
     }
 }
